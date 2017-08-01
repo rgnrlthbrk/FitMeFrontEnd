@@ -1,4 +1,5 @@
 import { browser, by, element } from 'protractor';
+import { promise } from 'selenium-webdriver';
 
 export class FitMeFrontEndPage {
   navigateTo() {
