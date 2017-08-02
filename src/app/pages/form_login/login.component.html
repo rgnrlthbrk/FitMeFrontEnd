@@ -1,45 +1,35 @@
-<form id="login-form" action="\" method="post" role="form"
-      style="display: block;">
-  <div class="form-group">
-    <input type="text" name="username" id="username" tabindex="1" class="form-control"
-           placeholder="Username" value="">
-  </div>
-  <div class="form-group">
-    <input type="password" name="password" id="password" tabindex="2" class="form-control"
-           placeholder="Password">
-  </div>
-  <div class="form-group text-center">
-    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-    <label for="remember"> Remember Me</label>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <input type="submit" name="login-submit" id="login-submit" tabindex="4"
-               class="form-control btn btn-login" value="Log In">
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="text-center">
-          <a href="\forgottenPassword" tabindex="5" class="forgot-password">Forgot Password?</a>
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <div class="main">
+        <h3>{{loginBean.login}}<a routerLink="/registration">{{ loginBean.signup }}</a></h3>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <a href="#" class="btn btn-lg btn-primary btn-block">{{ loginBean.facebook }}</a>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <a href="#" class="btn btn-lg btn-info btn-block">{{ loginBean.google }}</a>
+          </div>
         </div>
+        <div class="login-or">
+          <hr class="hr-or">
+          <span class="span-or">{{ loginBean.or }}</span>
+        </div>
+        <form role="form" action="\home" method="post" >
+          <div class="form-group">
+            <label for="inputUsernameEmail">{{ loginBean.credentials }}</label>
+            <input type="text" class="form-control" id="inputUsernameEmail" placeholder="{{ loginBean.placeholdercredentials }}">
+          </div>
+          <div class="form-group">
+            <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
+            <label for="inputPassword">{{ loginBean.password }}</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="{{ loginBean.placeholderpassword }}">
+          </div>
+          <button type="submit" class="btn btn btn-primary">
+            {{ loginBean.btnlogin }}
+          </button>
+        </form>
       </div>
     </div>
   </div>
-</form>
-
-
-<!--
-  <div class="list list-inset">
-    <label class="item item-input">
-      <input type="text" placeholder="Username" ng-model="data.username">
-    </label>
-    <label class="item item-input">
-      <input type="password" placeholder="Password" ng-model="data.password">
-    </label>
-  </div>
-  <button class="button button-block button-calm" ng-click="login()">Login</button>
--->
+</div>

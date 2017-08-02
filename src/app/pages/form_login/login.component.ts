@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
+import { LoginBean } from './LoginBean';
 
 @Component({
   selector:    'login-custom',
   templateUrl: './login.component.html',
-  styleUrls:   [ './login.component.css' ]
+  styleUrls:   [ './login.component.css' ],
+  providers:   [ LoginBean ]
 })
 
 export class LoginComponent {
-  constructor() {
+
+  constructor(public loginBean: LoginBean) {
   }
 
   // $scope.data = {};
@@ -20,5 +23,4 @@ export class LoginComponent {
   //  return response;
   // });
   // };
-
 }
