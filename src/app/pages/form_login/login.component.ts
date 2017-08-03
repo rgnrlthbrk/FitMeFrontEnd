@@ -1,26 +1,35 @@
 import { Component } from '@angular/core';
-import { LoginBean } from './LoginBean';
+import { LoginBean } from './login.bean';
+import { UserLogin } from '../../beans/userLogin';
 
 @Component({
   selector:    'login-custom',
   templateUrl: './login.component.html',
   styleUrls:   [ './login.component.css' ],
-  providers:   [ LoginBean ]
+  providers:   [ LoginBean, UserLogin]
 })
 
 export class LoginComponent {
 
-  constructor(public loginBean: LoginBean) {
+  constructor(public loginBean: LoginBean,
+              public user: UserLogin) {
   }
 
-  // $scope.data = {};
-  // $scope.login = () => {
-  //  LoginService.loginUser($scope.data.username, $scope.data.password)
-  //    .success((response) => {
-  //    $state.go('users');
-  // }).error((response) => {
-  //    console.log('NOK!!!');
-  //  return response;
-  // });
-  // };
+  submitLogin(credentials: string, password: string): void {
+    credentials = credentials.trim();
+    password    = password.trim();
+    if (!credentials || !password) {
+      return;
+    }
+    // this.userService
+    //  .getSingleUser();
+
+  }
+
+  // ngOnInit(): void {
+  //  this.route.paramMap
+  //    .switchMap((params: ParamMap) => this.heroService.getHero(+params.get('id')))
+  //    .subscribe(hero => this.hero = hero);
+  // }
+
 }

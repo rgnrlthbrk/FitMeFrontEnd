@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./../FitMe/dist",
     "rootDir": "ts",
     "sourceMap": true,
     "declaration": true,

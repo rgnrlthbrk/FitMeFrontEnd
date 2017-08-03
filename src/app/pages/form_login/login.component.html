@@ -15,17 +15,23 @@
           <hr class="hr-or">
           <span class="span-or">{{ loginBean.or }}</span>
         </div>
-        <form role="form" action="\home" method="post" >
+        <form role="form" action="\home" method="post">
           <div class="form-group">
             <label for="inputUsernameEmail">{{ loginBean.credentials }}</label>
-            <input type="text" class="form-control" id="inputUsernameEmail" placeholder="{{ loginBean.placeholdercredentials }}">
+            <input type="text" class="form-control" id="inputUsernameEmail"
+                   placeholder="{{ loginBean.placeholdercredentials }}"
+                   #userCredentials/>
           </div>
           <div class="form-group">
             <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
             <label for="inputPassword">{{ loginBean.password }}</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="{{ loginBean.placeholderpassword }}">
+            <input type="password" class="form-control" id="inputPassword"
+                   placeholder="{{ loginBean.placeholderpassword }}"
+                   #userPassword/>
           </div>
-          <button type="submit" class="btn btn btn-primary">
+          <button type="submit" class="btn btn btn-primary"
+                  (click)="submitLogin(userCredentials.value, userPassword.value);
+                    userCredentials.value = ''; userPassword.value = ''">
             {{ loginBean.btnlogin }}
           </button>
         </form>

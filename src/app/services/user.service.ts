@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { User } from './../../bean/user';
+import { User } from '../beans/user';
 
 @Injectable()
 export class UserService {
@@ -19,6 +19,15 @@ export class UserService {
     return this.http.get(this.usersUrl)
       .toPromise()
       .then(response => response.json().data as User[])
+      .catch(this.handleError);
+  }
+
+  // Get
+  getSingleUser(name: string): Promise<User[]> {
+    const url = `${this.usersUrl}/${name}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json().data as User)
       .catch(this.handleError);
   }
 

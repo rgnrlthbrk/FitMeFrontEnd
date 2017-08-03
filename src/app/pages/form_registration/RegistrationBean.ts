@@ -1,3 +1,6 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class RegistrationBean {
   get placeholderusername(): string {
     return this._placeholderusername;
