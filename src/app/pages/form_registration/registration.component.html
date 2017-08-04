@@ -6,23 +6,29 @@
         <form id="register-form" action="\login" method="post" role="form">
           <div class="form-group">
             <input type="text" name="username" id="username" tabindex="1" class="form-control"
-                   placeholder="{{ registrationBean.placeholderusername }}" value="">
+                   placeholder="{{ registrationBean.placeholderusername }}" value=""
+                   [(ngModel)]="newUser.name">
           </div>
           <div class="form-group">
             <input type="email" name="email" id="email" tabindex="1" class="form-control"
-                   placeholder="{{ registrationBean.placeholderemail }}" value="">
+                   placeholder="{{ registrationBean.placeholderemail }}" value=""
+                   [(ngModel)]="newUser.email">
           </div>
           <div class="form-group">
             <input type="password" name="password" id="password" tabindex="2" class="form-control"
-                   placeholder="{{ registrationBean.placeholderpassword }}">
+                   placeholder="{{ registrationBean.placeholderpassword }}"
+                   [(ngModel)]="newUser.password">
           </div>
           <div class="form-group">
             <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control"
-                   placeholder="{{ registrationBean.placeholderconfirmPassword }}">
+                   placeholder="{{ registrationBean.placeholderconfirmPassword }}" #confirmPassword
+                    (keyup) = "comparePasswords(confirmPassword.value)">
+            <p *ngIf= "comparedPasswords">{{ registrationBean.notEqualPasswords }}</p>
           </div>
           <div class="form-group">
-              <button type="submit" class="btn btn btn-primary" value="Register Now">{{ registrationBean.submit }}
-              </button>
+            <button type="submit" class="btn btn btn-primary" [disabled] = "comparedPasswords"
+                    (click)="addNewUser()">{{ registrationBean.submit }}
+            </button>
           </div>
         </form>
       </div>

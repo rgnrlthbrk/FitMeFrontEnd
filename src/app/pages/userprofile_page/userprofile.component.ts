@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector:    'user-custom',
+  selector:    'userprofile-custom',
   templateUrl: './userprofile.component.html',
   styleUrls:   [ './userprofile.component.css' ]
 })
 
-export class UserpageComponent {
+export class UserProfilePageComponent {
   constructor() {
   }
 
