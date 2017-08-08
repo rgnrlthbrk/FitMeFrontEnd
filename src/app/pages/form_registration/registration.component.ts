@@ -20,17 +20,12 @@ export class RegistrationComponent {
   comparePasswords(password: string): void {
     if (!this.newUser.password && !password) {
       this.comparedPasswords = false;
-      this._comparedPasswordsChange.emit(this.comparedPasswords);
     }
     if (this.newUser.password.length <= password.length) {
-      if (this.newUser.password === password) {
-        console.log('Same password!');
-      } else {
-        this.comparedPasswords = true;
-        this._comparedPasswordsChange.emit(this.comparedPasswords);
-      }
+      this.comparedPasswords = this.newUser.password !== password;
+    } else {
+      this.comparedPasswords = false;
     }
-    this.comparedPasswords = false;
     this._comparedPasswordsChange.emit(this.comparedPasswords);
   }
 

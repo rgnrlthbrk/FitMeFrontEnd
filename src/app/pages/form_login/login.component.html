@@ -23,7 +23,6 @@
                    #userCredentials/>
           </div>
           <div class="form-group">
-            <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
             <label for="inputPassword">{{ loginBean.password }}</label>
             <input type="password" class="form-control" id="inputPassword"
                    placeholder="{{ loginBean.placeholderpassword }}"
@@ -34,6 +33,7 @@
                     userCredentials.value = ''; userPassword.value = ''">
             {{ loginBean.btnlogin }}
           </button>
+          <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
         </form>
       </div>
     </div>

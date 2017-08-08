@@ -6,6 +6,12 @@ body {
   padding-top: 20%;
 }
 .main {
-  max-width: 320px;
   margin: 0 auto;
+}
+input {
+  max-width: 200px;
+}
+
+.row {
+  padding-left: 36%;
 }

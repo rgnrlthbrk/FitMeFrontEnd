@@ -2,24 +2,40 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class RegistrationBean {
+  get labelConfirmPassword(): string {
+    return this._labelConfirmPassword;
+  }
+
+  get labelPassword(): string {
+    return this._labelPassword;
+  }
+
+  get labelEmail(): string {
+    return this._labelEmail;
+  }
+
+  get labelUsername(): string {
+    return this._labelUsername;
+  }
+
   get notEqualPasswords(): string {
     return this._notEqualPasswords;
   }
 
-  get placeholderusername(): string {
-    return this._placeholderusername;
+  get placeholderUsername(): string {
+    return this._placeholderUsername;
   }
 
-  get placeholderemail(): string {
-    return this._placeholderemail;
+  get placeholderEmail(): string {
+    return this._placeholderEmail;
   }
 
-  get placeholderpassword(): string {
-    return this._placeholderpassword;
+  get placeholderPassword(): string {
+    return this._placeholderPassword;
   }
 
-  get placeholderconfirmPassword(): string {
-    return this._placeholderconfirmPassword;
+  get placeholderConfirmPassword(): string {
+    return this._placeholderConfirmPassword;
   }
 
   get submit(): string {
@@ -31,20 +47,31 @@ export class RegistrationBean {
   }
 
   private _title: string;
-  private _placeholderusername: string;
-  private _placeholderemail: string;
-  private _placeholderpassword: string;
-  private _placeholderconfirmPassword: string;
+  private _placeholderUsername: string;
+  private _placeholderEmail: string;
+  private _placeholderPassword: string;
+  private _placeholderConfirmPassword: string;
   private _submit: string;
   private _notEqualPasswords: string;
 
+  private _labelUsername: string;
+  private _labelEmail: string;
+  private _labelPassword: string;
+  private _labelConfirmPassword: string;
+
   constructor() {
-    this._title                      = 'Please register';
-    this._placeholderusername        = 'Username';
-    this._placeholderemail           = 'E-mail';
-    this._placeholderpassword        = 'Password';
-    this._placeholderconfirmPassword = 'Confirm password';
     this._submit                     = 'Submit';
+    this._title                      = 'Please register';
     this._notEqualPasswords          = 'The passwords are not the same !';
+
+    this._placeholderUsername        = 'your_username_01';
+    this._placeholderEmail           = 'your@mail.com';
+    this._placeholderPassword        = '******';
+    this._placeholderConfirmPassword = '******';
+
+    this._labelUsername        = 'Username: ';
+    this._labelEmail           = 'E-mail: ';
+    this._labelPassword        = 'Password: ';
+    this._labelConfirmPassword = 'Confirm password: ';
   }
 }
