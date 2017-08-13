@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/form_login/login.component';
 import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
 import { NavigationUserComponent } from './pages/bar/header_user/navigationUser.component';
 import { NavbarService } from './services/navbar.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { NavbarService } from './services/navbar.service';
   imports:      [
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule
   ],
   providers:    [ NavbarService ],
