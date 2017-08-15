@@ -1,3 +1,3 @@
-<ul *ngFor="let link of links" [ngClass]="link.styleClass">
+<ul *ngFor="let link of fmLinks" [ngClass]="link.styleClass">
   <li *ngIf="link.visible"><a [routerLink]="link.urlLink"><span [ngClass]="link.icon"></span> {{ link.nameLink }}</a></li>
 </ul>

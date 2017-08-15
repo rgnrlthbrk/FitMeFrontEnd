@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RegistrationBean } from './registration.bean';
 import { User } from '../../beans/user';
 
@@ -24,6 +24,7 @@ export class RegistrationComponent {
     }
     if (this.newUser.password.length <= this.confirmPassword.length) {
       this.comparedPasswords = this.newUser.password !== this.confirmPassword;
+      console.log('minavam' + this.comparedPasswords);
     } else {
       this.comparedPasswords = false;
     }
@@ -32,8 +33,10 @@ export class RegistrationComponent {
 
   checkFormValid(valid: boolean): boolean {
     if (!this.comparedPasswords) {
+      console.log('dejba');
       return true;
     }
+    console.log('state: ' + this.comparedPasswords && !valid);
     return this.comparedPasswords && !valid;
   }
 

@@ -1,3 +1,5 @@
+import { Injectable } from '@angular/core';
+@Injectable()
 export class Link {
   set visible(value: boolean) {
     this._visible = value;

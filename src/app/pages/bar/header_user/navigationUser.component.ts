@@ -6,12 +6,13 @@ import { Link } from '../../../beans/link';
 @Component({
   selector:    'nav-user-bar',
   templateUrl: './navigationUser.component.html',
-  styleUrls:   [ './navigationUser.component.css' ]
+  styleUrls:   [ './navigationUser.component.css' ],
+  providers:   [ Link, NavbarService ]
 })
 
 export class NavigationUserComponent implements OnDestroy {
-  private _links: Array<Link>;
-          subscription: Subscription;
+  @Input() fmLinks: Array<Link>;
+                  subscription: Subscription;
 
   private userLogged = false;
 
@@ -19,7 +20,7 @@ export class NavigationUserComponent implements OnDestroy {
     this.subscription = navbarService.userLogged$.subscribe(
       (res) => {
         this.userLogged = res;
-        for (let link of this._links) {
+        for (let link of this.fmLinks) {
           if (link.nameLink === 'Login') {
             link.visible = !res;
           } else if (link.nameLink === 'Profile') {
@@ -28,15 +29,6 @@ export class NavigationUserComponent implements OnDestroy {
         }
       }
     );
-  }
-
-  get links(): Array<Link> {
-    return this._links;
-  }
-
-  @Input()
-  set links(value: Array<Link>) {
-    this._links = value;
   }
 
   ngOnDestroy() {
