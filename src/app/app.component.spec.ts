@@ -16,6 +16,7 @@ import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing';
 import { NavbarService } from './services/navbar.service';
+import { BarModule } from "./pages/bar/bar.module";
 
 let comp: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
@@ -25,9 +26,6 @@ describe('AppComponent & TestModule', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        NavigationComponent,
-        NavigationUserComponent,
-        FooterComponent,
         HomepageComponent,
         UserProfilePageComponent,
         RegistrationComponent,
@@ -39,7 +37,8 @@ describe('AppComponent & TestModule', () => {
       ],
       imports:      [
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BarModule
       ]
     })
 
@@ -58,9 +57,6 @@ describe('AppComponent & NO_ERRORS_SCHEMA', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        NavigationComponent,
-        NavigationUserComponent,
-        FooterComponent,
         HomepageComponent,
         UserProfilePageComponent,
         RegistrationComponent,
@@ -68,7 +64,8 @@ describe('AppComponent & NO_ERRORS_SCHEMA', () => {
         PageNotFoundComponent ],
       imports:      [
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BarModule
       ],
       providers : [
         NavbarService

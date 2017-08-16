@@ -48,7 +48,7 @@ describe('NavigationComponent (templateUrl)', () => {
       .map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective);
   });
 
-  it('no title in the DOM until manually call `detectChanges`', () => {
+  it('nav to be loaded', () => {
     expect(el.textContent).not.toBeNull();
   });
 
@@ -71,6 +71,20 @@ describe('NavigationComponent (templateUrl)', () => {
     fixture.detectChanges();
 
     expect(usersLink.navigatedTo).toBe('/users');
+  });
+
+
+  it('go to HomePage', () => {
+    fixture.detectChanges();
+    const homeLinkDe = linkDes[ 0 ];
+    const homeLink   = links[ 0 ];
+
+    expect(homeLink.navigatedTo).toBeNull('link should not have navigated yet');
+
+    homeLinkDe.triggerEventHandler('click', null);
+    fixture.detectChanges();
+
+    expect(homeLink.navigatedTo).toBe('/home');
   });
 
 });

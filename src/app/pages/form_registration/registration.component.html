@@ -3,51 +3,67 @@
     <div class="main">
       <div class="row">
         <h3>{{ registrationBean.title }}</h3>
-        <form class="form-horizontal" id="register-form" action="\login" method="post" role="form"
-              (ngSubmit)="addNewUser()" #registrationForm="ngForm">
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="name">
-              {{ registrationBean.labelUsername }}</label>
+
+        <form [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit(registrationForm.value)" novalidate class="form-horizontal">
+
+          <fieldset class="form-group">
+            <label for="name" class="control-label col-sm-2">{{ registrationBean.labelUsername }}</label>
             <div class="col-sm-10">
-              <input type="text" name="name" id="name" tabindex="1" class="form-control"
+              <input formControlName="name"
                      placeholder="{{ registrationBean.placeholderUsername }}" value=""
-                     [(ngModel)]="newUser.name" required
-                     #name="ngModel"/>
+                     type="text" id="name"
+                     class="form-control"/>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="email">
-              {{ registrationBean.labelEmail }}</label>
+            <div class='form-text error' *ngIf='registrationForm.controls.name.touched'>
+              <div *ngIf="registrationForm.controls.name.hasError('required')">Name is required.</div>
+              <div *ngIf="registrationForm.controls.name.hasError('minlength')">Name has to be more than 5 symbols.</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="email" class="control-label col-sm-2">{{ registrationBean.labelEmail }}</label>
             <div class="col-sm-10">
-              <input type="email" name="email" id="email" tabindex="1" class="form-control"
+              <input formControlName="email"
                      placeholder="{{ registrationBean.placeholderEmail }}" value=""
-                     [(ngModel)]="newUser.email" required/>
+                     type="email" id="email"
+                     class="form-control"/>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="password">
-              {{ registrationBean.labelPassword }}</label>
+            <div class="form-text error" *ngIf="registrationForm.controls.email.touched">
+              <div *ngIf="registrationForm.controls.email.hasError('required')">Email is required.</div>
+              <div *ngIf="registrationForm.controls.email.hasError('invalidEmail')">Email is invalid.</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="password" class="control-label col-sm-2">{{ registrationBean.labelPassword }}</label>
             <div class="col-sm-10">
-              <input type="password" name="password" id="password" tabindex="2" class="form-control"
+              <input formControlName="password"
                      placeholder="{{ registrationBean.placeholderPassword }}"
-                     [(ngModel)]="newUser.password" required/>
+                     type="password" id="password"
+                     class="form-control"/>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="confirmPassword">
-              {{ registrationBean.labelConfirmPassword }}</label>
+            <div class='form-text error' *ngIf="registrationForm.controls.password.touched">
+              <div *ngIf="registrationForm.controls.password.hasError('required')">Password is required.</div>
+              <div *ngIf="registrationForm.controls.password.hasError('minlength')">Password isn't long enough.</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="confirmPassword" class="control-label col-sm-2">{{ registrationBean.labelConfirmPassword }}</label>
             <div class="col-sm-10">
-              <input type="password" name="confirm-password" id="confirmPassword" tabindex="2" class="form-control"
+              <input formControlName="cpassword"
                      placeholder="{{ registrationBean.placeholderConfirmPassword }}"
-                     [(ngModel)]="confirmPassword"
-                     (keyup)="comparePasswords()" required/>
+                     type="password" id="confirmPassword"
+                     class="form-control"/>
             </div>
-            <p *ngIf="comparedPasswords">{{ registrationBean.notEqualPasswords }}</p>
-          </div>
+            <div class='form-text error' *ngIf="registrationForm.controls.cpassword.touched">
+              <div *ngIf="registrationForm.hasError('mismatchedPasswords')">Passwords do not match.</div>
+            </div>
+          </fieldset>
+
+
           <div class="form-group">
-            <button type="submit" class="btn btn btn-primary" [disabled]="checkFormValid(registrationForm.form.valid)">
-              {{ registrationBean.submit }}
-            </button>
+            <button [disabled]='!registrationForm.valid' type="submit" class="btn btn-primary">{{ registrationBean.submit }}</button>
           </div>
         </form>
       </div>

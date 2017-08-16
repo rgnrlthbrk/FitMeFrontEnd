@@ -1,50 +1,46 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { RegistrationBean } from './registration.bean';
-import { User } from '../../beans/user';
+import { Registration } from './registration.interface';
+import { emailValidator } from '../../validators/email.validator';
+import { matchingPasswords } from '../../validators/matchingpasswords.validator';
 
 @Component({
   selector:    'registration-custom',
   templateUrl: './registration.component.html',
   styleUrls:   [ './registration.component.css' ],
-  providers:   [ RegistrationBean, User ]
+  providers:   [ RegistrationBean ]
 })
 
 export class RegistrationComponent {
-  comparedPasswords                  = false;
-  @Output() _comparedPasswordsChange = new EventEmitter<boolean>();
-  private confirmPassword: string    = '';
+  public registrationForm: FormGroup;
+  public events: any[] = [];
 
   constructor(public registrationBean: RegistrationBean,
-              public newUser: User) {
+              private fb: FormBuilder) {
+
+    this.registrationForm = this.fb.group({
+      name:      [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(5) ]) ],
+      email:     [ '', Validators.compose([ <any>Validators.required, emailValidator ]) ],
+      password:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(4) ]) ],
+      cpassword: [ '', <any>Validators.required ]
+    }, { validator: matchingPasswords('password', 'cpassword') });
+
+    this.subcribeToFormChanges();
   }
 
-  comparePasswords(): void {
-    if (!this.newUser.password && !this.confirmPassword) {
-      this.comparedPasswords = false;
-    }
-    if (this.newUser.password.length <= this.confirmPassword.length) {
-      this.comparedPasswords = this.newUser.password !== this.confirmPassword;
-      console.log('minavam' + this.comparedPasswords);
-    } else {
-      this.comparedPasswords = false;
-    }
-    this._comparedPasswordsChange.emit(this.comparedPasswords);
+  onSubmit(form: Registration, valid: boolean): void {
+    // action="\registration" method="post"
+    console.log(form);
   }
 
-  checkFormValid(valid: boolean): boolean {
-    if (!this.comparedPasswords) {
-      console.log('dejba');
-      return true;
-    }
-    console.log('state: ' + this.comparedPasswords && !valid);
-    return this.comparedPasswords && !valid;
-  }
+  subcribeToFormChanges() {
+    const myFormStatusChanges$ = this.registrationForm.statusChanges;
+    const myFormValueChanges$  = this.registrationForm.valueChanges;
 
-  addNewUser(): void {
-    // #confirmPassword validation!
-    console.log(this.newUser);
+    myFormStatusChanges$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
+    myFormValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
   }
 
 }
-
-

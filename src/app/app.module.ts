@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -16,14 +16,12 @@ import { PageNotFoundComponent } from './pages/notfount_page/notfound.component'
 import { NavigationUserComponent } from './pages/bar/header_user/navigationUser.component';
 import { NavbarService } from './services/navbar.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BarModule } from './pages/bar/bar.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    NavigationUserComponent,
-    FooterComponent,
     HomepageComponent,
     UserProfilePageComponent,
     RegistrationComponent,
@@ -35,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule
+    ReactiveFormsModule,
+    BarModule
   ],
   providers:    [ NavbarService ],
   bootstrap:    [ AppComponent ]
