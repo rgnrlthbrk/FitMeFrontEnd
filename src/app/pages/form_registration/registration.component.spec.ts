@@ -1,5 +1,4 @@
 import { async, TestBed } from '@angular/core/testing';
-import { User } from '../../beans/user';
 import { RegistrationBean } from './registration.bean';
 import { RegistrationComponent } from './registration.component';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +12,7 @@ describe('RegistrationComponent', () => {
         FormsModule
       ],
       providers:    [
-        RegistrationBean, User
+        RegistrationBean
       ]
     }).compileComponents();
   }));
@@ -36,7 +35,7 @@ describe('RegistrationComponent', () => {
   }));
 
 
-  it('should be ok', async(() => {
+  it('should test first input field', async(() => {
     let fixture = TestBed.createComponent(RegistrationComponent);
     fixture.detectChanges();
     fixture.whenStable().then(() => {
@@ -46,7 +45,7 @@ describe('RegistrationComponent', () => {
       el.value = 'someValue';
       el.dispatchEvent(new Event('input'));
 
-      expect(fixture.componentInstance.newUser.name).toBe('someValue');
+      expect(fixture.componentInstance.registrationForm.controls.name).toBe('someValue');
     });
   }));
 

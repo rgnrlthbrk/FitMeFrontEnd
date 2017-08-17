@@ -2,24 +2,7 @@ body {
   padding-top: 15px;
   font-size: 12px
 }
-.container{
-  /*padding-top: 20%;*/
-}
 .main {
+  max-width: 320px;
   margin: 0 auto;
 }
-input {
-  max-width: 200px;
-}
-
-.row {
-  padding-left: 36%;
-}
-
-/*.ng-valid[required], .ng-valid.required  {*/
-  /*border-left: 5px solid #42A948; !* green *!*/
-/*}*/
-
-/*.ng-invalid:not(form)  {*/
-  /*border-left: 5px solid #a94442; !* red *!*/
-/*}*/

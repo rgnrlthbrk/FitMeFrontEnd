@@ -2,6 +2,28 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class RegistrationBean {
+  get mismatchedPasswords(): string {
+    return this._mismatchedPasswords;
+  }
+  get passwordMinlength(): string {
+    return this._passwordMinlength;
+  }
+  get passwordRequired(): string {
+    return this._passwordRequired;
+  }
+  get invalidEmail(): string {
+    return this._invalidEmail;
+  }
+  get emailRequired(): string {
+    return this._emailRequired;
+  }
+  get nameMinLength(): string {
+    return this._nameMinLength;
+  }
+  get nameRequired(): string {
+    return this._nameRequired;
+  }
+
   get labelConfirmPassword(): string {
     return this._labelConfirmPassword;
   }
@@ -16,10 +38,6 @@ export class RegistrationBean {
 
   get labelUsername(): string {
     return this._labelUsername;
-  }
-
-  get notEqualPasswords(): string {
-    return this._notEqualPasswords;
   }
 
   get placeholderUsername(): string {
@@ -52,17 +70,23 @@ export class RegistrationBean {
   private _placeholderPassword: string;
   private _placeholderConfirmPassword: string;
   private _submit: string;
-  private _notEqualPasswords: string;
 
   private _labelUsername: string;
   private _labelEmail: string;
   private _labelPassword: string;
   private _labelConfirmPassword: string;
 
+  private _nameRequired: string;
+  private _nameMinLength: string;
+  private _emailRequired: string;
+  private _invalidEmail: string;
+  private _passwordRequired: string;
+  private _passwordMinlength: string;
+  private _mismatchedPasswords: string;
+
   constructor() {
     this._submit                     = 'Submit';
     this._title                      = 'Please register';
-    this._notEqualPasswords          = 'The passwords are not the same !';
 
     this._placeholderUsername        = 'your_username_01';
     this._placeholderEmail           = 'your@mail.com';
@@ -73,5 +97,13 @@ export class RegistrationBean {
     this._labelEmail           = 'E-mail: ';
     this._labelPassword        = 'Password: ';
     this._labelConfirmPassword = 'Confirm password: ';
+
+    this._nameRequired = 'Name is required.';
+    this._nameMinLength = 'Name has to be more than 5 symbols.';
+    this._emailRequired = 'Email is required.';
+    this._invalidEmail = 'Email is invalid.';
+    this._passwordRequired = 'Password is required.';
+    this._passwordMinlength = 'Password isn\'t long enough.';
+    this._mismatchedPasswords = 'Passwords do not match.';
   }
 }

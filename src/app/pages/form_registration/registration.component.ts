@@ -5,20 +5,21 @@ import { RegistrationBean } from './registration.bean';
 import { Registration } from './registration.interface';
 import { emailValidator } from '../../validators/email.validator';
 import { matchingPasswords } from '../../validators/matchingpasswords.validator';
+import { SubscribeForm } from '../../services/subscribeform.service';
 
 @Component({
   selector:    'registration-custom',
   templateUrl: './registration.component.html',
   styleUrls:   [ './registration.component.css' ],
-  providers:   [ RegistrationBean ]
+  providers:   [ RegistrationBean, SubscribeForm ]
 })
 
 export class RegistrationComponent {
   public registrationForm: FormGroup;
-  public events: any[] = [];
 
   constructor(public registrationBean: RegistrationBean,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private form: SubscribeForm) {
 
     this.registrationForm = this.fb.group({
       name:      [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(5) ]) ],
@@ -27,20 +28,12 @@ export class RegistrationComponent {
       cpassword: [ '', <any>Validators.required ]
     }, { validator: matchingPasswords('password', 'cpassword') });
 
-    this.subcribeToFormChanges();
+    this.form.subcribeToFormChanges(this.registrationForm);
   }
 
-  onSubmit(form: Registration, valid: boolean): void {
+  onSubmit(form: Registration): void {
     // action="\registration" method="post"
     console.log(form);
-  }
-
-  subcribeToFormChanges() {
-    const myFormStatusChanges$ = this.registrationForm.statusChanges;
-    const myFormValueChanges$  = this.registrationForm.valueChanges;
-
-    myFormStatusChanges$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
-    myFormValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
   }
 
 }

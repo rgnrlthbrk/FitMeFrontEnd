@@ -1,44 +1,57 @@
 import { Component } from '@angular/core';
 import { LoginBean } from './login.bean';
-import { UserLogin } from '../../beans/userLogin';
 import { LoginMock } from './login.mock';
 
 import { Router } from '@angular/router';
 import { NavbarService } from '../../services/navbar.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SubscribeForm } from '../../services/subscribeform.service';
+import { Login } from './login.interface';
 
 @Component({
   selector:    'login-custom',
   templateUrl: './login.component.html',
   styleUrls:   [ './login.component.css' ],
-  providers:   [ LoginBean, UserLogin, LoginMock ]
+  providers:   [ LoginBean, LoginMock, SubscribeForm ]
 })
 
 export class LoginComponent {
+  public loginForm: FormGroup;
+
   constructor(public loginBean: LoginBean,
-              public user: UserLogin,
               public loginMock: LoginMock,
+              private fb: FormBuilder,
+              private form: SubscribeForm,
               public navbarService: NavbarService,
               public router: Router) {
     console.log('LoginComponent');
+
+    this.loginForm = this.fb.group({
+      usernameEmail: [ '', Validators.compose([ <any>Validators.required]) ],
+      password:      [ '', Validators.compose([ <any>Validators.required]) ],
+    });
+
+    this.form.subcribeToFormChanges(this.loginForm);
   }
 
-  submitLogin(credentials: string, password: string): void {
-    credentials = credentials.trim();
-    password    = password.trim();
-    if (!credentials || !password) {
-      return;
-    }
-
-    let navigate = '/login';
-    if (this.loginMock.credentials === credentials &&
-      this.loginMock.password === password) {
-      navigate = '/users';
-      this.navbarService.logUser(true);
-    } else {
-      this.navbarService.logUser(false);
-    }
-
-    this.router.navigate([ navigate ]);
-
+  onSubmit(form: Login): void {
+    console.log(form);
+    //  credentials = credentials.trim();
+    //  password    = password.trim();
+    //  if (!credentials || !password) {
+    //    return;
+    //  }
+    //
+    //  let navigate = '/login';
+    //  if (this.loginMock.credentials === credentials &&
+    //    this.loginMock.password === password) {
+    //    navigate = '/users';
+    //    this.navbarService.logUser(true);
+    //  } else {
+    //    this.navbarService.logUser(false);
+    //  }
+    //
+    //  this.router.navigate([ navigate ]);
+    //
   }
 }

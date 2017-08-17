@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LoginBean {
+  get passwordRequired(): string {
+    return this._passwordRequired;
+  }
+  get nameRequired(): string {
+    return this._nameRequired;
+  }
   get google(): string {
     return this._google;
   }
@@ -58,6 +64,9 @@ export class LoginBean {
   private _placeholdercredentials: string;
   private _placeholderpassword: string;
 
+  private _nameRequired: string;
+  private _passwordRequired: string;
+
   constructor() {
     this._login                  = 'Please Log In, or ';
     this._signup                 = 'Sign Up';
@@ -70,5 +79,9 @@ export class LoginBean {
     this._or                     = 'or';
     this._placeholdercredentials = 'Credentials';
     this._placeholderpassword    = 'Password';
+
+
+    this._nameRequired = 'Username or E-mail is required.';
+    this._passwordRequired = 'Password is required.';
   }
 }

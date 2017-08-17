@@ -3,38 +3,32 @@
     <div class="jumbotron">
       <div class="main">
         <h3>{{loginBean.login}}<a routerLink="/registration">{{ loginBean.signup }}</a></h3>
-        <div class="row">
-          <div class="col-xs-6 col-sm-6 col-md-6">
-            <a href="#" class="btn btn-lg btn-primary btn-block">{{ loginBean.facebook }}</a>
-          </div>
-          <div class="col-xs-6 col-sm-6 col-md-6">
-            <a href="#" class="btn btn-lg btn-info btn-block">{{ loginBean.google }}</a>
-          </div>
-        </div>
-        <div class="login-or">
-          <hr class="hr-or">
-          <span class="span-or">{{ loginBean.or }}</span>
-        </div>
-        <form role="form" action="\home" method="post">
-          <div class="form-group">
-            <label for="inputUsernameEmail">
-              {{ loginBean.credentials }}</label>
-            <input type="text" class="form-control" id="inputUsernameEmail"
+
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" novalidate class="form-horizontal">
+
+          <fieldset class="form-group">
+            <label for="inputUsernameEmail" class="control-label">{{ loginBean.credentials }}</label>
+            <input formControlName="usernameEmail"
+                   type="text" id="inputUsernameEmail"
                    placeholder="{{ loginBean.placeholdercredentials }}"
-                   #userCredentials required/>
-          </div>
-          <div class="form-group">
-            <label for="inputPassword">
-              {{ loginBean.password }}</label>
-            <input type="password" class="form-control" id="inputPassword"
+                   class="form-control"/>
+            <div class='form-text error' *ngIf='loginForm.controls.usernameEmail.touched'>
+              <div *ngIf="loginForm.controls.usernameEmail.hasError('required')">{{ loginBean.nameRequired }}</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="inputPassword" class="control-label">{{ loginBean.password }}</label>
+            <input formControlName="password"
+                   type="password"  id="inputPassword"
                    placeholder="{{ loginBean.placeholderpassword }}"
-                   #userPassword required/>
-          </div>
-          <button type="submit" class="btn btn btn-primary"
-                  (click)="submitLogin(userCredentials.value, userPassword.value);
-                    userCredentials.value = ''; userPassword.value = ''">
-            {{ loginBean.btnlogin }}
-          </button>
+                   class="form-control"/>
+            <div class='form-text error' *ngIf="loginForm.controls.password.touched">
+              <div *ngIf="loginForm.controls.password.hasError('required')">{{ loginBean.passwordRequired }}</div>
+            </div>
+          </fieldset>
+
+          <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">{{ loginBean.btnlogin }}</button>
           <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
         </form>
       </div>
