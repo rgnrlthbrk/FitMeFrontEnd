@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavbarService } from '../../../services/navbar.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Link } from '../../../beans/link';
@@ -10,14 +10,18 @@ import { Link } from '../../../beans/link';
   providers:   [ Link, NavbarService ]
 })
 
-export class NavigationUserComponent implements OnDestroy {
+export class NavigationUserComponent implements OnInit, OnDestroy {
+
   @Input() fmLinks: Array<Link>;
                   subscription: Subscription;
 
   private userLogged = false;
 
-  constructor(public navbarService: NavbarService) {
-    this.subscription = navbarService.userLogged$.subscribe(
+  constructor(private navbarService: NavbarService) {
+  }
+
+  ngOnInit(): void {
+    this.subscription = this.navbarService.userLogged$.subscribe(
       (res) => {
         this.userLogged = res;
         for (let link of this.fmLinks) {

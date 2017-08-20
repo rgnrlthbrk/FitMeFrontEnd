@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Link } from '../../../beans/link';
 
 @Component({
@@ -8,7 +8,8 @@ import { Link } from '../../../beans/link';
   providers:   [ Link ]
 })
 
-export class NavigationComponent {
+export class NavigationComponent implements OnInit{
+
   get links(): any {
     return this._links;
   }
@@ -16,6 +17,10 @@ export class NavigationComponent {
   private _links: any;
 
   constructor() {
+  }
+
+
+  ngOnInit(): void {
     this._links = [
       new Link('Users', '/users', '', 'nav navbar-nav', true),
       new Link('Login', '/login', 'glyphicon glyphicon-log-in', 'nav navbar-nav navbar-right', true),

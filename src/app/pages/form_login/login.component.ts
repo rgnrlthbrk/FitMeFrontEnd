@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginBean } from './login.bean';
 import { LoginMock } from './login.mock';
 
@@ -15,7 +15,8 @@ import { Login } from './login.interface';
   providers:   [ LoginBean, LoginMock, SubscribeForm ]
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+
   public loginForm: FormGroup;
 
   constructor(public loginBean: LoginBean,
@@ -24,14 +25,6 @@ export class LoginComponent {
               private form: SubscribeForm,
               public navbarService: NavbarService,
               public router: Router) {
-    console.log('LoginComponent');
-
-    this.loginForm = this.fb.group({
-      usernameEmail: [ '', Validators.compose([ <any>Validators.required]) ],
-      password:      [ '', Validators.compose([ <any>Validators.required]) ],
-    });
-
-    this.form.subcribeToFormChanges(this.loginForm);
   }
 
   onSubmit(form: Login): void {
@@ -53,5 +46,16 @@ export class LoginComponent {
     //
     //  this.router.navigate([ navigate ]);
     //
+  }
+
+  ngOnInit(): void {
+    console.log('LoginComponent');
+
+    this.loginForm = this.fb.group({
+      usernameEmail: [ '', Validators.compose([ <any>Validators.required]) ],
+      password:      [ '', Validators.compose([ <any>Validators.required]) ],
+    });
+
+    this.form.subcribeToFormChanges(this.loginForm);
   }
 }

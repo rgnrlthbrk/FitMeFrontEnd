@@ -1,5 +1,86 @@
-<div [@flyInOut]="'in'" class="jumbotron text-center">
-  <h1>Users and Proud</h1>
-  <h1>Users and Proud</h1>
-  <h1>Users and Proud</h1>
+<div [@flyInOut]="'in'" class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <div class="main">
+        <h3>{{userBean.profile}}</h3>
+
+        <form [formGroup]="userDataForm" (ngSubmit)="userDataForm.valid && onSubmit(userDataForm.value)" novalidate
+              class="form-horizontal">
+
+          <fieldset class="form-group">
+            <label for="age" class="control-label">{{ userBean.age }}</label>
+            <input formControlName="age"
+                   type="number" id="age"
+                   placeholder="{{ userBean.placeholderAge }}"
+                   class="form-control"/>
+            <div class='form-text error' *ngIf='userDataForm.controls.age.touched'>
+              <div *ngIf="userDataForm.controls.age.hasError('required')">{{ userBean.ageRequired }}</div>
+              <div *ngIf="userDataForm.controls.age.hasError('minlength')">{{ userBean.ageNonValid}}</div>
+              <div *ngIf="userDataForm.controls.age.hasError('maxlength')">{{ userBean.ageNonValid }}</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="height" class="control-label">{{ userBean.height }}</label>
+            <input formControlName="height"
+                   type="number" id="height"
+                   placeholder="{{ userBean.placeholderHeight }}"
+                   class="form-control"/>
+            <div class='form-text error' *ngIf='userDataForm.controls.height.touched'>
+              <div *ngIf="userDataForm.controls.height.hasError('required')">{{ userBean.heightRequired }}</div>
+              <div *ngIf="userDataForm.controls.height.hasError('minlength')">{{ userBean.heightNonValid}}</div>
+              <div *ngIf="userDataForm.controls.height.hasError('maxlength')">{{ userBean.heightNonValid }}</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="kilos" class="control-label">{{ userBean.kilos }}</label>
+            <input formControlName="kilos"
+                   type="number" id="kilos"
+                   placeholder="{{ userBean.placeholderKilos }}"
+                   class="form-control"/>
+            <div class='form-text error' *ngIf='userDataForm.controls.kilos.touched'>
+              <div *ngIf="userDataForm.controls.kilos.hasError('required')">{{ userBean.kilosRequired }}</div>
+              <div *ngIf="userDataForm.controls.kilos.hasError('minlength')">{{ userBean.kilosNonValid}}</div>
+              <div *ngIf="userDataForm.controls.kilos.hasError('maxlength')">{{ userBean.kilosNonValid }}</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="control-label">{{ userBean.sex }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="sex" value="male">{{ userBean.male }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="sex" value="female">{{ userBean.female }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="control-label">{{ userBean.goals }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="goals" value="loose">{{ userBean.loose }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="goals" value="keep">{{ userBean.keep }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="goals" value="gain">{{ userBean.gain }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="period" class="control-label">{{ userBean.dateDiet }}</label>
+            <input formControlName="period"
+                   type="date" id="period"
+                   class="form-control"/>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="allergic" class="control-label">{{ userBean.allergic }}</label>
+            <input formControlName="allergic"
+                   list="allergens" id="allergic"
+                   class="form-control"/>
+            <datalist id="allergens">
+              <option *ngFor="let allergen of userBean.allergensList" value="{{ allergen.name }}">
+            </datalist>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

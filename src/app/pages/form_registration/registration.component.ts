@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { RegistrationBean } from './registration.bean';
@@ -14,12 +14,22 @@ import { SubscribeForm } from '../../services/subscribeform.service';
   providers:   [ RegistrationBean, SubscribeForm ]
 })
 
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit{
+
   public registrationForm: FormGroup;
 
   constructor(public registrationBean: RegistrationBean,
               private fb: FormBuilder,
               private form: SubscribeForm) {
+
+  }
+
+  onSubmit(form: Registration): void {
+    // action="\registration" method="post"
+    console.log(form);
+  }
+
+  ngOnInit(): void {
 
     this.registrationForm = this.fb.group({
       name:      [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(5) ]) ],
@@ -30,10 +40,4 @@ export class RegistrationComponent {
 
     this.form.subcribeToFormChanges(this.registrationForm);
   }
-
-  onSubmit(form: Registration): void {
-    // action="\registration" method="post"
-    console.log(form);
-  }
-
 }

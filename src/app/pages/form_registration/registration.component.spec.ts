@@ -35,7 +35,7 @@ describe('RegistrationComponent', () => {
   }));
 
 
-  it('should test first input field', async(() => {
+  xit('should test first input field', async(() => {
     let fixture = TestBed.createComponent(RegistrationComponent);
     fixture.detectChanges();
     fixture.whenStable().then(() => {
