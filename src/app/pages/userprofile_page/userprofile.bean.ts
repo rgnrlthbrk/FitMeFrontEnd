@@ -19,6 +19,10 @@ export class UserprofileBean {
     return this._dateDietNonValid;
   }
 
+  get minimumOneMonth(): string {
+    return this._minimumOneMonth;
+  }
+
   get placeholderDateDiet(): string {
     return this._placeholderDateDiet;
   }
@@ -135,6 +139,7 @@ export class UserprofileBean {
   private _dateDiet: string;
   private _placeholderDateDiet: string;
   private _dateDietNonValid: string;
+  private _minimumOneMonth: string;
 
   private _allergic: string;
 
@@ -146,22 +151,22 @@ export class UserprofileBean {
   constructor() {
     this._profile = 'User Profile';
 
-    this._age            = 'Enter age: ';
-    this._placeholderAge = 'Enter age between 3-99';
+    this._age            = 'Enter your age: ';
+    this._placeholderAge = 'Age between 3-99';
     this._ageRequired    = 'Please enter your age';
     this._ageNonValid    = 'Entered age is not valid';
 
-    this._height            = 'Enter height: ';
-    this._placeholderHeight = 'Enter your height in centimeters';
+    this._height            = 'Enter your height: ';
+    this._placeholderHeight = 'In centimeters';
     this._heightRequired    = 'Please enter your height';
     this._heightNonValid    = 'Entered height is not valid';
 
-    this._kilos            = 'Enter your weight in kilograms: ';
-    this._placeholderKilos = 'Enter your weight';
+    this._kilos            = 'Enter your weight: ';
+    this._placeholderKilos = 'In kilograms';
     this._kilosRequired    = 'Please enter your weight';
     this._kilosNonValid    = 'Entered data is not valid';
 
-    this._sex    = 'Enter your sex: ';
+    this._sex    = 'Select your sex: ';
     this._male   = 'Male';
     this._female = 'Female';
 
@@ -172,22 +177,35 @@ export class UserprofileBean {
 
     this._dateDiet         = 'Select the ending period of the diet:';
     this._dateDietNonValid = 'Entered date is not valid';
+    this._minimumOneMonth  = 'Diet must be minimum one month';
 
     this._allergic = 'Please select if allergic to something: ';
 
     this._allergensList = [
       {
-        name:      'Lactose',
-        valueName: 'LactVal'
+        name:  'Nuts',
+        value: 0
       },
       {
-        name:      'Nuts',
-        valueName: 'NutsVal'
+        name:  'Eggs',
+        value: 1
       },
       {
-        name:      'Meat',
-        valueName: 'MeatVal'
+        name:  'Fish and fish products',
+        value: 2
       },
+      {
+        name:  'Soy and soy products',
+        value: 3
+      },
+      {
+        name:  ' Milk and dairy products',
+        value: 4
+      },
+      {
+        name:  'Shellfish',
+        value: 5
+      }
     ];
 
     this._submit = 'Submit';

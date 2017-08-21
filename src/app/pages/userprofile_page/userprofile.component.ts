@@ -6,6 +6,10 @@ import { UserprofileBean } from './userprofile.bean';
 import { SubscribeForm } from '../../services/subscribeform.service';
 import { UserData } from './userprofile.interface';
 import { Allergen } from '../../beans/allergen.bean';
+import { maxValue } from '../../validators/maxvalue.validator';
+import { minValue } from '../../validators/minvalue.validator';
+import { validate } from 'codelyzer/walkerFactory/walkerFn';
+import { minimumOneMonth, validDate } from '../../validators/date.validator';
 
 @Component({
   selector:    'userprofile-custom',
@@ -50,7 +54,7 @@ export class UserProfilePageComponent implements OnInit {
   removeAllergen(allergen: Allergen) {
     console.log(allergen);
     this.allergens = this.allergens.filter((element) => {
-      console.log(element)
+      console.log(element);
       return element !== allergen;
     });
     this.setAllergens(this.allergens);
@@ -71,13 +75,13 @@ export class UserProfilePageComponent implements OnInit {
     this.allergens = [];
 
     this.userDataForm = this.fb.group({
-      age:    [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(1), <any>Validators.maxLength(2) ]) ],
-      height: [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(3), <any>Validators.maxLength(3) ]) ],
-      kilos:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(2), <any>Validators.maxLength(3) ]) ],
-      sex:    [ '', Validators.compose([ <any>Validators.required ]) ], // TODO: checkbox validator
+      age:    [ null, Validators.compose([ <any>Validators.required, minValue(3), maxValue(99) ]) ],
+      height: [ null, Validators.compose([ <any>Validators.required, minValue(130), maxValue(260) ]) ],
+      kilos:  [ null, Validators.compose([ <any>Validators.required, minValue(35), maxValue(350) ]) ],
+      sex:    [ null, Validators.compose([ <any>Validators.required  ]) ],
 
-      goals:    [ '', Validators.compose([ <any>Validators.required ]) ], // TODO: checkbox validator
-      period:   [ '', Validators.compose([ <any>Validators.required ]) ], // TODO: dd/mm/yyyy validator
+      goals:    [ '', Validators.compose([ <any>Validators.required ]) ],
+      period:   [ '', Validators.compose([ <any>Validators.required, validDate, minimumOneMonth]) ],
       allergic: this.fb.array([])
     });
 
