@@ -28,8 +28,12 @@
             </div>
           </fieldset>
 
-          <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">{{ loginBean.btnlogin }}</button>
-          <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
+          <fieldset>
+            <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">{{ loginBean.btnlogin }}</button>
+          </fieldset>
+          <fieldset>
+            <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
+          </fieldset>
         </form>
       </div>
     </div>

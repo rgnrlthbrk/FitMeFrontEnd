@@ -1,7 +1,16 @@
 export class UserprofileBean {
+  get add(): string {
+    return this._add;
+  }
+
+  get submit(): string {
+    return this._submit;
+  }
+
   get allergic(): string {
     return this._allergic;
   }
+
   get allergensList(): any {
     return this._allergensList;
   }
@@ -131,6 +140,9 @@ export class UserprofileBean {
 
   private _allergensList: any;
 
+  private _submit: string;
+  private _add: string;
+
   constructor() {
     this._profile = 'User Profile';
 
@@ -177,5 +189,8 @@ export class UserprofileBean {
         valueName: 'MeatVal'
       },
     ];
+
+    this._submit = 'Submit';
+    this._add    = 'Add';
   }
 }

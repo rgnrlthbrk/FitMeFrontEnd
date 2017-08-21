@@ -71,14 +71,28 @@
           </fieldset>
 
           <fieldset class="form-group">
-            <label for="allergic" class="control-label">{{ userBean.allergic }}</label>
-            <input formControlName="allergic"
-                   list="allergens" id="allergic"
-                   class="form-control"/>
-            <datalist id="allergens">
-              <option *ngFor="let allergen of userBean.allergensList" value="{{ allergen.name }}">
-            </datalist>
+            <label for="allergic" class="control-label">{{ userBean.allergic }}</label><br>
+            <div id="allergic" class="dropdown">
+              <button id="dropbtn" class="btn btn-primary">{{ userBean.add }}</button>
+              <div class="dropdown-content">
+                <div *ngFor="let allergen of userBean.allergensList" class="drpdwnHover">
+                  <a (click)="onSubmitAllergens(allergen)">{{ allergen.name }}</a>
+                  <button (click)="removeAllergen(allergen)" class="btn btn-primary drpdwnBtn">X</button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <br>
+              <ul *ngFor="let v of allergensArray.value">
+                <li>{{ v.name }}</li>
+              </ul>
+            </div>
           </fieldset>
+
+          <fieldset class="form-group">
+            <button [disabled]='!userDataForm.valid' type="submit" class="btn btn-primary">{{ userBean.submit }}</button>
+          </fieldset>
+
         </form>
       </div>
     </div>

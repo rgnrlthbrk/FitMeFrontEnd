@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserprofileBean } from './userprofile.bean';
 import { SubscribeForm } from '../../services/subscribeform.service';
 import { UserData } from './userprofile.interface';
-import { Observable } from 'rxjs/Observable';
+import { Allergen } from '../../beans/allergen.bean';
 
 @Component({
   selector:    'userprofile-custom',
@@ -29,6 +29,7 @@ import { Observable } from 'rxjs/Observable';
 export class UserProfilePageComponent implements OnInit {
 
   public userDataForm: FormGroup;
+  private allergens: Allergen[];
 
   constructor(public userBean: UserprofileBean,
               private fb: FormBuilder,
@@ -39,21 +40,47 @@ export class UserProfilePageComponent implements OnInit {
     console.log(form);
   }
 
+  onSubmitAllergens(allergen: Allergen) {
+    if (this.allergens.indexOf(allergen) === -1) {
+      this.allergens.push(allergen);
+      this.setAllergens(this.allergens);
+    }
+  }
+
+  removeAllergen(allergen: Allergen) {
+    console.log(allergen);
+    this.allergens = this.allergens.filter((element) => {
+      console.log(element)
+      return element !== allergen;
+    });
+    this.setAllergens(this.allergens);
+  }
+
+  private setAllergens(allergens: Allergen[]) {
+    console.log(allergens);
+    const allergenTmp       = allergens.map(allergen => this.fb.group(allergen));
+    const allergenFormArray = this.fb.array(allergenTmp);
+    this.userDataForm.setControl('allergic', allergenFormArray);
+  }
+
+  get allergensArray(): FormArray {
+    return this.userDataForm.get('allergic') as FormArray;
+  }
+
   ngOnInit(): void {
+    this.allergens = [];
 
     this.userDataForm = this.fb.group({
       age:    [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(1), <any>Validators.maxLength(2) ]) ],
       height: [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(3), <any>Validators.maxLength(3) ]) ],
-      kilos:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(2), <any>Validators.maxLength(3)  ]) ],
-      sex:    [ '', Validators.compose([ <any>Validators.required]) ], // TODO: checkbox validator
+      kilos:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(2), <any>Validators.maxLength(3) ]) ],
+      sex:    [ '', Validators.compose([ <any>Validators.required ]) ], // TODO: checkbox validator
 
-      goals:    [ '', Validators.compose([ <any>Validators.required]) ], // TODO: checkbox validator
-      period:   [ '', Validators.compose([ <any>Validators.required]) ], // TODO: dd/mm/yyyy validator
-      allergic: [ '' ]
+      goals:    [ '', Validators.compose([ <any>Validators.required ]) ], // TODO: checkbox validator
+      period:   [ '', Validators.compose([ <any>Validators.required ]) ], // TODO: dd/mm/yyyy validator
+      allergic: this.fb.array([])
     });
 
     this.form.subcribeToFormChanges(this.userDataForm);
   }
 }
-
-
