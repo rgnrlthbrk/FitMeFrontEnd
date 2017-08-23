@@ -80,8 +80,8 @@ export class UserProfilePageComponent implements OnInit {
       kilos:  [ null, Validators.compose([ <any>Validators.required, minValue(35), maxValue(350) ]) ],
       sex:    [ null, Validators.compose([ <any>Validators.required  ]) ],
 
-      goals:    [ '', Validators.compose([ <any>Validators.required ]) ],
-      period:   [ '', Validators.compose([ <any>Validators.required, validDate, minimumOneMonth]) ],
+      goals:    [ null, Validators.compose([ <any>Validators.required ]) ],
+      period:   [ '',   Validators.compose([ <any>Validators.required ]) ],
       allergic: this.fb.array([])
     });
 

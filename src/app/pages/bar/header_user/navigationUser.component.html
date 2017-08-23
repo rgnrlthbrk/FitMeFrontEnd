@@ -1,3 +1,13 @@
 <ul *ngFor="let link of fmLinks" [ngClass]="link.styleClass">
-  <li *ngIf="link.visible"><a [routerLink]="link.urlLink"><span [ngClass]="link.icon"></span> {{ link.nameLink }}</a></li>
+  <li *ngIf="link.visible && link.nameLink !== 'Profile'"><a [routerLink]="link.urlLink">
+    <span [ngClass]="link.icon"></span> {{ link.nameLink }}</a></li>
+  <li *ngIf="link.visible && link.nameLink === 'Profile'">
+    <span [ngClass]="link.icon"></span>
+    <div class="dropdown">
+      <button class="dropbtn">{{ link.nameLink }}</button>
+      <div class="dropdown-content">
+        <a  *ngFor="let pLink of pLinks" [routerLink]="pLink.urlLink">{{ pLink.nameLink }}</a>
+      </div>
+    </div>
+  </li>
 </ul>

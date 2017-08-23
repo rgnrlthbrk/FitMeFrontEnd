@@ -7,13 +7,14 @@ import { Link } from '../../../beans/link';
   selector:    'nav-user-bar',
   templateUrl: './navigationUser.component.html',
   styleUrls:   [ './navigationUser.component.css' ],
-  providers:   [ Link, NavbarService ]
+  providers:   [ Link ]
 })
 
 export class NavigationUserComponent implements OnInit, OnDestroy {
 
   @Input() fmLinks: Array<Link>;
-                  subscription: Subscription;
+  @Input() pLinks: Array<Link>;
+           subscription: Subscription;
 
   private userLogged = false;
 
@@ -21,6 +22,7 @@ export class NavigationUserComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('this.subscription');
     this.subscription = this.navbarService.userLogged$.subscribe(
       (res) => {
         this.userLogged = res;

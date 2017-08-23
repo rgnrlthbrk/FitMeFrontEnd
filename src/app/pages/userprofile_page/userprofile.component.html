@@ -68,8 +68,6 @@
             <input formControlName="period"
                    type="date" id="period"
                    class="form-control"/>
-            <div *ngIf="userDataForm.controls.period.hasError('required')">{{ userBean.dateDietNonValid }}</div>
-            <div *ngIf="userDataForm.controls.period.hasError('minimumOneMonth')">{{ userBean.minimumOneMonth}}</div>
           </fieldset>
 
           <fieldset class="form-group">
