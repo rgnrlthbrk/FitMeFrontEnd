@@ -55,6 +55,25 @@
           </fieldset>
 
           <fieldset class="form-group">
+            <label class="control-label">{{ userBean.activity }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="activity" value="light">{{ userBean.light }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activity" value="normal">{{ userBean.normal }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activity" value="heavy">{{ userBean.heavy }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="control-label">{{ userBean.activityPeriod }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="none">{{ userBean.none }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="onetwo">{{ userBean.onethree }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="threefour">{{ userBean.foursix }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="everyday">{{ userBean.everyday }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
             <label class="control-label">{{ userBean.goals }}</label>
             <div class="center-block">
               <label class="radio-inline"><input type="radio" formControlName="goals" value="loose">{{ userBean.loose }}</label>

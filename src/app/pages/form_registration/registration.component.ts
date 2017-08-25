@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Http } from '@angular/http';
 
 import { RegistrationBean } from './registration.bean';
 import { Registration } from './registration.interface';
-import { emailValidator } from '../../validators/email.validator';
-import { matchingPasswords } from '../../validators/matchingpasswords.validator';
 import { SubscribeForm } from '../../services/subscribeform.service';
+
+import { emailValidator, matchingPasswords } from '../../validators/index';
 
 @Component({
   selector:    'registration-custom',
@@ -14,25 +15,35 @@ import { SubscribeForm } from '../../services/subscribeform.service';
   providers:   [ RegistrationBean, SubscribeForm ]
 })
 
-export class RegistrationComponent implements OnInit{
+export class RegistrationComponent implements OnInit {
 
   public registrationForm: FormGroup;
 
   constructor(public registrationBean: RegistrationBean,
               private fb: FormBuilder,
-              private form: SubscribeForm) {
+              private form: SubscribeForm,
+              private http: Http) {
 
   }
 
   onSubmit(form: Registration): void {
-    // action="\registration" method="post"
-    console.log(form);
+    this.http
+      .post('/registration', form)
+      .subscribe(
+        data => {
+          // some handling
+        },
+        err => {
+          console.log('Something went wrong!');
+          console.log(err);
+        }
+      );
   }
 
   ngOnInit(): void {
 
     this.registrationForm = this.fb.group({
-      name:      [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(5) ]) ],
+      username:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(5) ]) ],
       email:     [ '', Validators.compose([ <any>Validators.required, emailValidator ]) ],
       password:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(4) ]) ],
       cpassword: [ '', <any>Validators.required ]

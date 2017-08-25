@@ -7,13 +7,13 @@
         <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" novalidate class="form-horizontal">
 
           <fieldset class="form-group">
-            <label for="inputUsernameEmail" class="control-label">{{ loginBean.credentials }}</label>
-            <input formControlName="usernameEmail"
-                   type="text" id="inputUsernameEmail"
+            <label for="inputUsername" class="control-label">{{ loginBean.username }}</label>
+            <input formControlName="username"
+                   type="text" id="inputUsername"
                    placeholder="{{ loginBean.placeholdercredentials }}"
                    class="form-control"/>
-            <div class='form-text error' *ngIf='loginForm.controls.usernameEmail.touched'>
-              <div *ngIf="loginForm.controls.usernameEmail.hasError('required')">{{ loginBean.nameRequired }}</div>
+            <div class='form-text error' *ngIf="loginForm.controls.username.touched">
+              <div *ngIf="loginForm.controls.username.hasError('required')">{{ loginBean.nameRequired }}</div>
             </div>
           </fieldset>
 
@@ -30,10 +30,10 @@
 
           <fieldset>
             <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">{{ loginBean.btnlogin }}</button>
-          </fieldset>
-          <fieldset>
             <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
           </fieldset>
+          <br>
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
       </div>
     </div>

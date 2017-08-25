@@ -1,4 +1,33 @@
 export class UserprofileBean {
+  get everyday(): string {
+    return this._everyday;
+  }
+  get foursix(): string {
+    return this._foursix;
+  }
+  get onethree(): string {
+    return this._onethree;
+  }
+  get none(): string {
+    return this._none;
+  }
+  get activityPeriod(): string {
+    return this._activityPeriod;
+  }
+  get heavy(): string {
+    return this._heavy;
+  }
+  get normal(): string {
+    return this._normal;
+  }
+  get light(): string {
+    return this._light;
+  }
+  get activity(): string {
+    return this._activity;
+  }
+
+;
   get add(): string {
     return this._add;
   }
@@ -13,18 +42,6 @@ export class UserprofileBean {
 
   get allergensList(): any {
     return this._allergensList;
-  }
-
-  get dateDietNonValid(): string {
-    return this._dateDietNonValid;
-  }
-
-  get minimumOneMonth(): string {
-    return this._minimumOneMonth;
-  }
-
-  get placeholderDateDiet(): string {
-    return this._placeholderDateDiet;
   }
 
   get dateDiet(): string {
@@ -137,7 +154,6 @@ export class UserprofileBean {
   private _gain: string;
 
   private _dateDiet: string;
-  private _placeholderDateDiet: string;
   private _dateDietNonValid: string;
   private _minimumOneMonth: string;
 
@@ -147,6 +163,17 @@ export class UserprofileBean {
 
   private _submit: string;
   private _add: string;
+
+  private _activity: string;
+  private _light: string;
+  private _normal: string;
+  private _heavy: string;
+
+  private _activityPeriod: string;
+  private _none: string;
+  private _onethree: string;
+  private _foursix: string;
+  private _everyday: string;
 
   constructor() {
     this._profile = 'User Profile';
@@ -169,6 +196,17 @@ export class UserprofileBean {
     this._sex    = 'Select your sex: ';
     this._male   = 'Male';
     this._female = 'Female';
+
+    this._activity = 'Select your current kind of activity: ';
+    this._light    = 'Light cardio or yoga';
+    this._normal   = 'Normal training or jogging';
+    this._heavy    = 'Heavy lifting or CrossFit';
+
+    this._activityPeriod = 'Select how many day per week you do your training: ';
+    this._none            = 'None';
+    this._onethree        = '1-3';
+    this._foursix         = '4-6';
+    this._everyday        = 'Everyday';
 
     this._goals = 'Select your diet plan: ';
     this._loose = 'Loose some fat';

@@ -24,8 +24,8 @@ export class LoginBean {
     return this._login;
   }
 
-  get credentials(): string {
-    return this._credentials;
+  get username(): string {
+    return this._username;
   }
 
   get forgottenpassword(): string {
@@ -56,7 +56,7 @@ export class LoginBean {
   private _signup: string;
   private _facebook: string;
   private _google: string;
-  private _credentials: string;
+  private _username: string;
   private _forgottenpassword: string;
   private _btnlogin: string;
   private _or: string;
@@ -72,7 +72,7 @@ export class LoginBean {
     this._signup                 = 'Sign Up';
     this._facebook               = 'Facebook';
     this._google                 = 'Google';
-    this._credentials            = 'Username or email';
+    this._username               = 'Username';
     this._password               = 'Password';
     this._forgottenpassword      = 'Forgot password?';
     this._btnlogin               = 'Log In';

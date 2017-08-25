@@ -35,7 +35,7 @@ export class UserService {
   createSingleUser(): Promise<User[]> {
     return this.http.post(this.usersUrl, { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data as User)
+      .then(response => response.json().data as User)
       .catch(this.handleError);
   }
 

@@ -63,12 +63,12 @@ describe('AppComponent & RouterTestingModule', () => {
     click(page.usersLinkDe);
 
     advance();
-    expectPathToBe('/users');
+    expectPathToBe('/user');
     expectElementOf(UserProfilePageComponent);
 
     page.expectEvents([
-      [ r.NavigationStart, '/users' ], [ r.RoutesRecognized, '/users' ],
-      [ r.NavigationEnd, '/users' ]
+      [ r.NavigationStart, '/user' ], [ r.RoutesRecognized, '/user' ],
+      [ r.NavigationEnd, '/user' ]
     ]);
   }));
 

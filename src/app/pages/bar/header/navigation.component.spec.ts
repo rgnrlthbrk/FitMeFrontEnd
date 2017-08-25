@@ -56,7 +56,7 @@ describe('NavigationComponent (templateUrl)', () => {
     fixture.detectChanges();
     expect(links.length).toBe(3, 'should have 3 links');
     expect(links[ 0 ].linkParams).toBe('/home', '1st link should go to HomepageComponent');
-    expect(links[ 1 ].linkParams).toBe('/users', '1st link should go to HomepageComponent');
+    expect(links[ 1 ].linkParams).toBe('/user', '1st link should go to HomepageComponent');
     expect(links[ 2 ].linkParams).toBe('/login', '1st link should go to LoginComponent');
   });
 
@@ -70,7 +70,7 @@ describe('NavigationComponent (templateUrl)', () => {
     usersLinkDe.triggerEventHandler('click', null);
     fixture.detectChanges();
 
-    expect(usersLink.navigatedTo).toBe('/users');
+    expect(usersLink.navigatedTo).toBe('/user');
   });
 
 

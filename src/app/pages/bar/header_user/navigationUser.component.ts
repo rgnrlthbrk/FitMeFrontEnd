@@ -22,7 +22,6 @@ export class NavigationUserComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('this.subscription');
     this.subscription = this.navbarService.userLogged$.subscribe(
       (res) => {
         this.userLogged = res;

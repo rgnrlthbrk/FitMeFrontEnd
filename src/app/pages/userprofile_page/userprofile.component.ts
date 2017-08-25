@@ -6,10 +6,7 @@ import { UserprofileBean } from './userprofile.bean';
 import { SubscribeForm } from '../../services/subscribeform.service';
 import { UserData } from './userprofile.interface';
 import { Allergen } from '../../beans/allergen.bean';
-import { maxValue } from '../../validators/maxvalue.validator';
-import { minValue } from '../../validators/minvalue.validator';
-import { validate } from 'codelyzer/walkerFactory/walkerFn';
-import { minimumOneMonth, validDate } from '../../validators/date.validator';
+import { maxValue, minValue} from '../../validators/index';
 
 @Component({
   selector:    'userprofile-custom',
@@ -41,7 +38,7 @@ export class UserProfilePageComponent implements OnInit {
   }
 
   onSubmit(form: UserData) {
-    console.log(form);
+    // TODO: implement something ...
   }
 
   onSubmitAllergens(allergen: Allergen) {
@@ -52,16 +49,13 @@ export class UserProfilePageComponent implements OnInit {
   }
 
   removeAllergen(allergen: Allergen) {
-    console.log(allergen);
     this.allergens = this.allergens.filter((element) => {
-      console.log(element);
       return element !== allergen;
     });
     this.setAllergens(this.allergens);
   }
 
   private setAllergens(allergens: Allergen[]) {
-    console.log(allergens);
     const allergenTmp       = allergens.map(allergen => this.fb.group(allergen));
     const allergenFormArray = this.fb.array(allergenTmp);
     this.userDataForm.setControl('allergic', allergenFormArray);
@@ -78,10 +72,13 @@ export class UserProfilePageComponent implements OnInit {
       age:    [ null, Validators.compose([ <any>Validators.required, minValue(3), maxValue(99) ]) ],
       height: [ null, Validators.compose([ <any>Validators.required, minValue(130), maxValue(260) ]) ],
       kilos:  [ null, Validators.compose([ <any>Validators.required, minValue(35), maxValue(350) ]) ],
-      sex:    [ null, Validators.compose([ <any>Validators.required  ]) ],
+      sex:    [ null, Validators.compose([ <any>Validators.required ]) ],
+
+      activity:       [ null, Validators.compose([ <any>Validators.required ]) ],
+      activityPeriod: [ null, Validators.compose([ <any>Validators.required ]) ],
 
       goals:    [ null, Validators.compose([ <any>Validators.required ]) ],
-      period:   [ '',   Validators.compose([ <any>Validators.required ]) ],
+      period:   [ '', Validators.compose([ <any>Validators.required ]) ],
       allergic: this.fb.array([])
     });
 

@@ -26,12 +26,11 @@ export class NavigationComponent implements OnInit{
   ngOnInit(): void {
     this._links = [
       new Link('Login',   '/login', 'glyphicon glyphicon-log-in', 'nav navbar-nav navbar-right', true),
-      new Link('Profile', '/',      'glyphicon glyphicon-user', 'nav navbar-nav navbar-right', false),
+      new Link('Profile', '/',      'glyphicon glyphicon-user',   'nav navbar-nav navbar-right', false),
     ];
     this._profileLinks = [
-      new Link('Edit profile', '/users', '', '', false),
-      new Link('Logout',       '/',      '', '', false)
+      new Link('Edit profile', '/user',  '', '', false),
+      new Link('Logout',       '/logout', '', '', false)
     ];
-
   }
 }
