@@ -18,7 +18,7 @@ import { Location } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
-import { UserProfilePageComponent } from './pages/userprofile_page/userprofile.component';
+import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { HomepageComponent } from './pages/home_page/homepage.component';
 import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
@@ -64,7 +64,7 @@ describe('AppComponent & RouterTestingModule', () => {
 
     advance();
     expectPathToBe('/user');
-    expectElementOf(UserProfilePageComponent);
+    expectElementOf(UserDataComponent);
 
     page.expectEvents([
       [ r.NavigationStart, '/user' ], [ r.RoutesRecognized, '/user' ],

@@ -1,4 +1,4 @@
-export class UserprofileBean {
+export class UserdataBean {
   get everyday(): string {
     return this._everyday;
   }

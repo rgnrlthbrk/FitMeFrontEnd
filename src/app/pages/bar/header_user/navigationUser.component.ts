@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavbarService } from '../../../services/navbar.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Link } from '../../../beans/link';
+import { Link } from '../../../beans/link.bean';
 
 @Component({
   selector:    'nav-user-bar',

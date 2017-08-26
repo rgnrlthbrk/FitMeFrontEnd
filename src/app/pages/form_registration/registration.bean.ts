@@ -5,21 +5,27 @@ export class RegistrationBean {
   get mismatchedPasswords(): string {
     return this._mismatchedPasswords;
   }
+
   get passwordMinlength(): string {
     return this._passwordMinlength;
   }
+
   get passwordRequired(): string {
     return this._passwordRequired;
   }
+
   get invalidEmail(): string {
     return this._invalidEmail;
   }
+
   get emailRequired(): string {
     return this._emailRequired;
   }
+
   get nameMinLength(): string {
     return this._nameMinLength;
   }
+
   get nameRequired(): string {
     return this._nameRequired;
   }
@@ -84,9 +90,10 @@ export class RegistrationBean {
   private _passwordMinlength: string;
   private _mismatchedPasswords: string;
 
+
   constructor() {
-    this._submit                     = 'Submit';
-    this._title                      = 'Please register';
+    this._submit = 'Submit';
+    this._title  = 'Please register';
 
     this._placeholderUsername        = 'your_username_01';
     this._placeholderEmail           = 'your@mail.com';
@@ -98,12 +105,12 @@ export class RegistrationBean {
     this._labelPassword        = 'Password: ';
     this._labelConfirmPassword = 'Confirm password: ';
 
-    this._nameRequired = 'Name is required.';
-    this._nameMinLength = 'Name has to be more than 5 symbols.';
-    this._emailRequired = 'Email is required.';
-    this._invalidEmail = 'Email is invalid.';
-    this._passwordRequired = 'Password is required.';
-    this._passwordMinlength = 'Password isn\'t long enough.';
+    this._nameRequired        = 'Name is required.';
+    this._nameMinLength       = 'Name has to be more than 5 symbols.';
+    this._emailRequired       = 'Email is required.';
+    this._invalidEmail        = 'Email is invalid.';
+    this._passwordRequired    = 'Password is required.';
+    this._passwordMinlength   = 'Password isn\'t long enough.';
     this._mismatchedPasswords = 'Passwords do not match.';
   }
 }

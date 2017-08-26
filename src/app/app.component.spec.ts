@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './pages/bar/header/navigation.component';
 import { FooterComponent } from './pages/bar/footer/footer.component';
 
-import { UserProfilePageComponent } from './pages/userprofile_page/userprofile.component';
+import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { HomepageComponent } from './pages/home_page/homepage.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { LoginComponent } from './pages/form_login/login.component';
@@ -27,7 +27,7 @@ describe('AppComponent & TestModule', () => {
       declarations: [
         AppComponent,
         HomepageComponent,
-        UserProfilePageComponent,
+        UserDataComponent,
         RegistrationComponent,
         LoginComponent,
         PageNotFoundComponent
@@ -58,7 +58,7 @@ describe('AppComponent & NO_ERRORS_SCHEMA', () => {
       declarations: [
         AppComponent,
         HomepageComponent,
-        UserProfilePageComponent,
+        UserDataComponent,
         RegistrationComponent,
         LoginComponent,
         PageNotFoundComponent ],

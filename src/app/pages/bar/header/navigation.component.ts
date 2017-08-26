@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Link } from '../../../beans/link';
+import { Link } from '../../../beans/link.bean';
 
 @Component({
   selector:    'nav-bar',

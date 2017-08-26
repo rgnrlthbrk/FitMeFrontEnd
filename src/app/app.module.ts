@@ -7,11 +7,12 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
 
-import { UserProfilePageComponent } from './pages/userprofile_page/userprofile.component';
+import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { HomepageComponent } from './pages/home_page/homepage.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { LoginComponent } from './pages/form_login/login.component';
 import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
+import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
 
 import { BarModule } from './pages/bar/bar.module';
 
@@ -22,11 +23,11 @@ import { AuthGuard } from './guards/index';
   declarations: [
     AppComponent,
     HomepageComponent,
-    UserProfilePageComponent,
+    UserDataComponent,
+    UserProfileComponent,
     RegistrationComponent,
     LoginComponent,
     PageNotFoundComponent
-
   ],
   imports:      [
     AppRoutingModule,

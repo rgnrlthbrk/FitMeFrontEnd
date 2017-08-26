@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         .then(result => {
           if (result === true) {
             this.navbarService.logUser(true);
-            this.router.navigate([ '/' ]);
+            this.router.navigate([ '/user/:' + form.username ]);
           } else {
             this.navbarService.logUser(false);
             this.error = 'Username or password is incorrect';

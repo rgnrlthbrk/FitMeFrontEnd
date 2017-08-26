@@ -18,32 +18,38 @@ import { emailValidator, matchingPasswords } from '../../validators/index';
 export class RegistrationComponent implements OnInit {
 
   public registrationForm: FormGroup;
+  private modal: any;
+  private alert: any;
 
   constructor(public registrationBean: RegistrationBean,
               private fb: FormBuilder,
               private form: SubscribeForm,
               private http: Http) {
-
   }
 
   onSubmit(form: Registration): void {
+
     this.http
       .post('/registration', form)
       .subscribe(
         data => {
-          // some handling
+          this.modal = data.json().message;
+          this.registrationForm.reset();
+          this.alert = 'alert alert-success';
         },
         err => {
-          console.log('Something went wrong!');
-          console.log(err);
+          this.modal = err.json().message;
+          this.alert = 'alert alert-danger';
         }
       );
   }
 
   ngOnInit(): void {
+    this.modal = null;
+    this.alert = null;
 
     this.registrationForm = this.fb.group({
-      username:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(5) ]) ],
+      username:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(4) ]) ],
       email:     [ '', Validators.compose([ <any>Validators.required, emailValidator ]) ],
       password:  [ '', Validators.compose([ <any>Validators.required, <any>Validators.minLength(4) ]) ],
       cpassword: [ '', <any>Validators.required ]

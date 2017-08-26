@@ -3,25 +3,25 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { UserProfilePageComponent } from './userprofile.component';
-import { UserprofileBean } from './userprofile.bean';
+import { UserDataComponent } from './userdata.component';
+import { UserdataBean } from './userdata.bean';
 
-let app: UserProfilePageComponent;
-let fixture: ComponentFixture<UserProfilePageComponent>;
+let app: UserDataComponent;
+let fixture: ComponentFixture<UserDataComponent>;
 
-describe('UserProfilePageComponent', () => {
+describe('UserProfileComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserProfilePageComponent ],
+      declarations: [ UserDataComponent ],
       imports:      [
         FormsModule
       ],
       providers:    [
-        UserprofileBean
+        UserdataBean
       ]
     }).compileComponents()
       .then(() => {
-        fixture = TestBed.createComponent(UserProfilePageComponent);
+        fixture = TestBed.createComponent(UserDataComponent);
         app     = fixture.componentInstance;
       });
   }));

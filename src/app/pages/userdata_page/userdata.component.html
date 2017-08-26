@@ -1,0 +1,130 @@
+<div [@flyInOut]="'in'" class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <div class="main">
+        <h3>{{userDataBean.profile}}</h3>
+
+        <form [formGroup]="userDataForm" (ngSubmit)="userDataForm.valid && onSubmit(userDataForm.value)" novalidate
+              class="form-horizontal">
+
+          <fieldset class="form-group">
+            <label for="age" class="control-label">{{ userDataBean.age }}</label>
+            <input formControlName="age"
+                   type="number" id="age"
+                   placeholder="{{ userDataBean.placeholderAge }}"
+                   class="form-control"/>
+            <div class='form-text error' *ngIf='userDataForm.controls.age.touched'>
+              <div *ngIf="userDataForm.controls.age.hasError('required')">{{ userDataBean.ageRequired }}</div>
+              <div *ngIf="userDataForm.controls.age.hasError('minValue')">{{ userDataBean.ageNonValid}}</div>
+              <div *ngIf="userDataForm.controls.age.hasError('maxValue')">{{ userDataBean.ageNonValid }}</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="height" class="control-label">{{ userDataBean.height }}</label>
+            <input formControlName="height"
+                   type="number" id="height"
+                   placeholder="{{ userDataBean.placeholderHeight }}"
+                   class="form-control"/>
+            <div class='form-text error' *ngIf='userDataForm.controls.height.touched'>
+              <div *ngIf="userDataForm.controls.height.hasError('required')">{{ userDataBean.heightRequired }}</div>
+              <div *ngIf="userDataForm.controls.height.hasError('minValue')">{{ userDataBean.heightNonValid}}</div>
+              <div *ngIf="userDataForm.controls.height.hasError('maxValue')">{{ userDataBean.heightNonValid }}</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="kilos" class="control-label">{{ userDataBean.kilos }}</label>
+            <input formControlName="kilos"
+                   type="number" id="kilos"
+                   placeholder="{{ userDataBean.placeholderKilos }}"
+                   class="form-control"/>
+            <div class='form-text error' *ngIf='userDataForm.controls.kilos.touched'>
+              <div *ngIf="userDataForm.controls.kilos.hasError('required')">{{ userDataBean.kilosRequired }}</div>
+              <div *ngIf="userDataForm.controls.kilos.hasError('minValue')">{{ userDataBean.kilosNonValid}}</div>
+              <div *ngIf="userDataForm.controls.kilos.hasError('maxValue')">{{ userDataBean.kilosNonValid }}</div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="control-label">{{ userDataBean.sex }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="sex" value="male">{{ userDataBean.male }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="sex" value="female">{{
+                userDataBean.female }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="control-label">{{ userDataBean.activity }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="activity" value="light">{{
+                userDataBean.light }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activity" value="normal">{{
+                userDataBean.normal }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activity" value="heavy">{{
+                userDataBean.heavy }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="control-label">{{ userDataBean.activityPeriod }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="none">{{
+                userDataBean.none }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="onetwo">{{
+                userDataBean.onethree }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="threefour">{{
+                userDataBean.foursix }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="everyday">{{
+                userDataBean.everyday }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="control-label">{{ userDataBean.goals }}</label>
+            <div class="center-block">
+              <label class="radio-inline"><input type="radio" formControlName="goals" value="loose">{{
+                userDataBean.loose }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="goals" value="keep">{{ userDataBean.keep
+                }}</label>
+              <label class="radio-inline"><input type="radio" formControlName="goals" value="gain">{{ userDataBean.gain
+                }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="period" class="control-label">{{ userDataBean.dateDiet }}</label>
+            <input formControlName="period"
+                   type="date" id="period"
+                   class="form-control"/>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="allergic" class="control-label">{{ userDataBean.allergic }}</label><br>
+            <div id="allergic" class="dropdown">
+              <button id="dropbtn" class="btn btn-primary">{{ userDataBean.add }}</button>
+              <div class="dropdown-content">
+                <div *ngFor="let allergen of userDataBean.allergensList" class="drpdwnHover">
+                  <a (click)="onSubmitAllergens(allergen)">{{ allergen.name }}</a>
+                  <button (click)="removeAllergen(allergen)" class="btn btn-primary drpdwnBtn">X</button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <br>
+              <ul *ngFor="let v of allergensArray.value">
+                <li>{{ v.name }}</li>
+              </ul>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <button [disabled]='!userDataForm.valid' type="submit" class="btn btn-primary">{{ userDataBean.submit }}</button>
+          </fieldset>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
