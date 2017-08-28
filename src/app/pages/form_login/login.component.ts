@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { LoginBean } from './login.bean';
 import { Login } from './login.interface';
 
-import { AuthenticationService, NavbarService, SubscribeForm } from '../../services/index';
+import { AuthenticationService, SessionService, SubscribeForm } from '../../services/index';
 
 @Component({
   selector:    'login-custom',
@@ -25,9 +25,10 @@ export class LoginComponent implements OnInit {
   constructor(public loginBean: LoginBean,
               private fb: FormBuilder,
               private subscribeForm: SubscribeForm,
-              public navbarService: NavbarService,
+              public sessionService: SessionService,
               public router: Router,
               private authenticationService: AuthenticationService) {
+    console.log('LoginComponent');
   }
 
   onSubmit(form: Login): void {
@@ -42,16 +43,16 @@ export class LoginComponent implements OnInit {
         .toPromise()
         .then(result => {
           if (result === true) {
-            this.navbarService.logUser(true);
-            this.router.navigate([ '/user/:' + form.username ]);
+            this.sessionService.logUser(true);
+            this.router.navigate([ '/user/' + form.username ]);
           } else {
-            this.navbarService.logUser(false);
+            this.sessionService.logUser(false);
             this.error = 'Username or password is incorrect';
           }
         })
         .catch(
           () => {
-            this.navbarService.logUser(false);
+            this.sessionService.logUser(false);
             this.error = 'Username or password is incorrect';
           }
         );
@@ -59,12 +60,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('LoginComponent');
 
-    this.authenticationService.logout();
-    this.navbarService.logUser(this.userLogged);
-
-    this.subscription = this.navbarService.userLogged$.subscribe(
+    this.subscription = this.sessionService.userLogged$.subscribe(
       (res) => {
         this.userLogged = res;
       }

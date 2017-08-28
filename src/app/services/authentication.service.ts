@@ -6,12 +6,14 @@ import { Login } from '../pages/form_login/login.interface';
 
 @Injectable()
 export class AuthenticationService {
-  public token: string;
+  private token: any;
 
   constructor(private http: Http) {
     // set token if saved in local storage
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser && currentUser.token;
+    this.token       = JSON.parse(localStorage.getItem('currentUserToken'));
+    if (this.token) {
+      this.token = this.token.token;
+    }
   }
 
   login(login: Login): Observable<boolean> {
@@ -36,7 +38,8 @@ export class AuthenticationService {
 
   logout(): void {
     // clear token remove user from local storage to log user out
-    this.token = null;
+    console.log('logging out');
+    this.token       = null;
     localStorage.removeItem('currentUser');
     localStorage.removeItem('currentUserToken');
   }

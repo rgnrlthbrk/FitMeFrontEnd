@@ -5,12 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HomepageComponent } from './pages/home_page/homepage.component';
 import { UserDataComponent } from './pages/userdata_page/userdata.component';
+import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { LoginComponent } from './pages/form_login/login.component';
+import { LogoutComponent } from './pages/form_logout/logout.component';
 import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
 
 import { AuthGuard } from './guards/auth.guard';
-import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'user/:userName', component: UserProfileComponent, canActivate: [ AuthGuard]  },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

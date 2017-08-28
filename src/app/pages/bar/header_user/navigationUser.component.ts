@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NavbarService } from '../../../services/navbar.service';
+import { SessionService } from '../../../services/session.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Link } from '../../../beans/link.bean';
 
@@ -18,11 +18,11 @@ export class NavigationUserComponent implements OnInit, OnDestroy {
 
   private userLogged = false;
 
-  constructor(private navbarService: NavbarService) {
+  constructor(private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
-    this.subscription = this.navbarService.userLogged$.subscribe(
+    this.subscription = this.sessionService.userLogged$.subscribe(
       (res) => {
         this.userLogged = res;
         for (let link of this.fmLinks) {

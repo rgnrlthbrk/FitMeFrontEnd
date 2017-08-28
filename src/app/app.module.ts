@@ -11,12 +11,13 @@ import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { HomepageComponent } from './pages/home_page/homepage.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { LoginComponent } from './pages/form_login/login.component';
+import { LogoutComponent } from './pages/form_logout/logout.component';
 import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
 import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
 
 import { BarModule } from './pages/bar/bar.module';
 
-import { AuthenticationService, NavbarService, UserService } from './services/index';
+import { AuthenticationService, SessionService, UserService } from './services/index';
 import { AuthGuard } from './guards/index';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AuthGuard } from './guards/index';
     UserProfileComponent,
     RegistrationComponent,
     LoginComponent,
+    LogoutComponent,
     PageNotFoundComponent
   ],
   imports:      [
@@ -40,7 +42,7 @@ import { AuthGuard } from './guards/index';
   ],
   providers:    [
     AuthGuard,
-    NavbarService,
+    SessionService,
     AuthenticationService,
     UserService
   ],

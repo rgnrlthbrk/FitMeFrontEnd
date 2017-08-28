@@ -7,6 +7,7 @@ import { SubscribeForm } from '../../services/subscribeform.service';
 import { UserData } from './userdata.interface';
 import { Allergen } from '../../beans/allergen.bean';
 import { maxValue, minValue } from '../../validators/index';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector:    'userdata-custom',
@@ -31,31 +32,58 @@ export class UserDataComponent implements OnInit {
 
   public userDataForm: FormGroup;
   private allergens: Allergen[];
+  private error: string;
+  private userData: UserData;
 
   constructor(public userDataBean: UserdataBean,
               private fb: FormBuilder,
-              private form: SubscribeForm) {
+              private form: SubscribeForm,
+              private userService: UserService) {
   }
 
-  onSubmit(form: UserData) {
-    // TODO: implement something ...
+  onSubmit(form: UserData): void {
+    if (this.userDataForm.valid) {
+      console.log(this.userData);
+      if (!this.userData) {
+        const something = this.userService
+          .createSingleUserData(form)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch(error => console.log(error));
+        console.log('something');
+        console.log(something);
+      } else {
+        const something = this.userService
+          .updateSingleUserData(form)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch(error => console.log(error));
+        console.log('something');
+        console.log(something);
+      }
+
+    } else {
+      this.error = 'Username or password is incorrect';
+    }
   }
 
-  onSubmitAllergens(allergen: Allergen) {
+  addAllergens(allergen: Allergen): void {
     if (this.allergens.indexOf(allergen) === -1) {
       this.allergens.push(allergen);
       this.setAllergens(this.allergens);
     }
   }
 
-  removeAllergen(allergen: Allergen) {
+  removeAllergen(allergen: Allergen): void {
     this.allergens = this.allergens.filter((element) => {
       return element !== allergen;
     });
     this.setAllergens(this.allergens);
   }
 
-  private setAllergens(allergens: Allergen[]) {
+  private setAllergens(allergens: Allergen[]): void {
     const allergenTmp       = allergens.map(allergen => this.fb.group(allergen));
     const allergenFormArray = this.fb.array(allergenTmp);
     this.userDataForm.setControl('allergic', allergenFormArray);
@@ -81,6 +109,13 @@ export class UserDataComponent implements OnInit {
       period:   [ '', Validators.compose([ <any>Validators.required ]) ],
       allergic: this.fb.array([])
     });
+
+    this.userService.getSingleUser()
+      .then((result) => {
+        this.userData = result;
+        console.log(this.userData);
+      })
+      .catch(error => console.log(error));
 
     this.form.subcribeToFormChanges(this.userDataForm);
   }

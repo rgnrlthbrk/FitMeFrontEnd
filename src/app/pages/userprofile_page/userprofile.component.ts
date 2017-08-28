@@ -7,20 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class UserProfileComponent implements OnInit {
-
-  username: any;
+  private _username: any;
 
   constructor() {
+    console.log('UserProfileComponent');
   }
 
+  get username(): any {
+    return this._username;
+  }
 
   ngOnInit(): void {
-    console.log('kvo stava bratmiii??')
-    const userName = localStorage.getItem('currentUser');
+    const userName = JSON.parse(localStorage.getItem('currentUser'));
     if (userName) {
-      this.username = userName;
+      this._username = userName.username;
     } else {
-      this.username = 'Bai hui';
+      this._username = 'Bai hui';
     }
   }
 }

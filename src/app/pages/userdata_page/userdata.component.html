@@ -106,7 +106,7 @@
               <button id="dropbtn" class="btn btn-primary">{{ userDataBean.add }}</button>
               <div class="dropdown-content">
                 <div *ngFor="let allergen of userDataBean.allergensList" class="drpdwnHover">
-                  <a (click)="onSubmitAllergens(allergen)">{{ allergen.name }}</a>
+                  <a (click)="addAllergens(allergen)">{{ allergen.name }}</a>
                   <button (click)="removeAllergen(allergen)" class="btn btn-primary drpdwnBtn">X</button>
                 </div>
               </div>

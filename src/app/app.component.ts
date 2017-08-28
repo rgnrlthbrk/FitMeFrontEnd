@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SessionService } from './services/session.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector:    'app-root',
@@ -6,4 +8,12 @@ import { Component } from '@angular/core';
   styleUrls:   [ './app.component.css' ]
 })
 export class AppComponent {
+  constructor(private sessionService: SessionService,
+              private authenticationService: AuthenticationService) {
+    console.log('AppComponent');
+    const isLogged = this.sessionService.isUserLogged;
+    if (!isLogged) {
+      this.authenticationService.logout();
+    }
+  }
 }

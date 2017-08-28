@@ -15,7 +15,7 @@ import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing';
-import { NavbarService } from './services/navbar.service';
+import { SessionService } from './services/session.service';
 import { BarModule } from "./pages/bar/bar.module";
 
 let comp: AppComponent;
@@ -33,7 +33,7 @@ describe('AppComponent & TestModule', () => {
         PageNotFoundComponent
       ],
       providers : [
-        NavbarService
+        SessionService
       ],
       imports:      [
         FormsModule,
@@ -68,7 +68,7 @@ describe('AppComponent & NO_ERRORS_SCHEMA', () => {
         BarModule
       ],
       providers : [
-        NavbarService
+        SessionService
       ],
       schemas:      [ NO_ERRORS_SCHEMA ]
     })

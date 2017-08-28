@@ -4,12 +4,13 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from '../beans/user.interface';
+import { UserData } from '../pages/userdata_page/userdata.interface';
 
 @Injectable()
 export class UserService {
 
   private headers  = new Headers({ 'Content-Type': 'application/json' });
-  private usersUrl = 'users';  // URL to web api
+  private usersUrl = 'user';  // URL to web api
 
   constructor(private http: Http) {
   }
@@ -23,19 +24,39 @@ export class UserService {
   }
 
   // Get
-  getSingleUser(name: string): Promise<User[]> {
-    const url = `${this.usersUrl}/${name}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json().data as User)
-      .catch(this.handleError);
+  getSingleUser(): Promise<UserData> {
+    console.log('getSingleUser');
+    const username = JSON.parse(localStorage.getItem('currentUser')).username;
+    const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
+    return this.http.get('/user', {
+      headers: new Headers({
+        'Content-Type':   'application/json',
+        'username':       username,
+        'x-access-token': token
+      })
+    })
+    .toPromise()
+    .then((response) => {
+      return response.json() as UserData;
+    })
+    .catch(this.handleError);
   }
 
   // Post
-  createSingleUser(): Promise<User[]> {
-    return this.http.post(this.usersUrl, { headers: this.headers })
+  createSingleUserData(userData: UserData): Promise<UserData> {
+    console.log('createSingleUserData');
+    const username = JSON.parse(localStorage.getItem('currentUser')).username;
+    const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
+    return this.http
+      .post('/user', userData, {
+        headers: new Headers({
+          'Content-Type':   'application/json',
+          'username':       username,
+          'x-access-token': token
+        })
+      })
       .toPromise()
-      .then(response => response.json().data as User)
+      .then(() => userData)
       .catch(this.handleError);
   }
 
@@ -49,12 +70,20 @@ export class UserService {
   }
 
   // Put
-  updateSingleUser(user: User): Promise<User> {
-    const url = `${this.usersUrl}/${user.id}`;
+  updateSingleUserData(userData: UserData): Promise<UserData> {
+    console.log('updateSingleUserData');
+    const username = JSON.parse(localStorage.getItem('currentUser')).username;
+    const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
     return this.http
-      .put(url, JSON.stringify(user), { headers: this.headers })
+      .put('/user', userData, {
+        headers: new Headers({
+          'Content-Type':   'application/json',
+          'username':       username,
+          'x-access-token': token
+        })
+      })
       .toPromise()
-      .then(() => user)
+      .then(() => userData)
       .catch(this.handleError);
   }
 

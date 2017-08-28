@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router }  from '@angular/router';
+import { Router } from '@angular/router';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector:    'my-app',
@@ -10,6 +11,6 @@ export class PageNotFoundComponent {
   }
 
   goBack(): void {
-    this._router.navigate(['/home']);
+    this._router.navigate([ '/home' ]);
   }
 }
