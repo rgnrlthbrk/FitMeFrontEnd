@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserdataBean } from './userdata.bean';
@@ -13,19 +12,7 @@ import { UserService } from '../../services/user.service';
   selector:    'userdata-custom',
   templateUrl: './userdata.component.html',
   styleUrls:   [ './userdata.component.css' ],
-  providers:   [ UserdataBean, SubscribeForm ],
-  animations:  [
-    trigger('flyInOut', [
-      state('in', style({ transform: 'translateY(0)' })),
-      transition('void => *', [
-        style({ transform: 'translateY(-100%)' }),
-        animate(100)
-      ]),
-      transition('* => void', [
-        animate(100, style({ transform: 'translateY(100%)' }))
-      ])
-    ])
-  ]
+  providers:   [ UserdataBean, SubscribeForm ]
 })
 
 export class UserDataComponent implements OnInit {

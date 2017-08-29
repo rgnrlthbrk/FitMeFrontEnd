@@ -1,9 +1,12 @@
 export class UserdataBean {
-  get everyday(): string {
-    return this._everyday;
+  get extreme(): string {
+    return this._extreme;
   }
-  get foursix(): string {
-    return this._foursix;
+  get sixseven(): string {
+    return this._sixseven;
+  }
+  get threefive(): string {
+    return this._threefive;
   }
   get onethree(): string {
     return this._onethree;
@@ -172,8 +175,9 @@ export class UserdataBean {
   private _activityPeriod: string;
   private _none: string;
   private _onethree: string;
-  private _foursix: string;
-  private _everyday: string;
+  private _threefive: string;
+  private _sixseven: string;
+  private _extreme: string;
 
   constructor() {
     this._profile = 'User Profile';
@@ -203,10 +207,11 @@ export class UserdataBean {
     this._heavy    = 'Heavy lifting or CrossFit';
 
     this._activityPeriod = 'Select how many day per week you do your training: ';
-    this._none            = 'None';
-    this._onethree        = '1-3';
-    this._foursix         = '4-6';
-    this._everyday        = 'Everyday';
+    this._none           = 'None';
+    this._onethree       = '1-3';
+    this._threefive      = '3-5';
+    this._sixseven       = '6-7';
+    this._extreme        = 'Extreme (hard work, hard training)';
 
     this._goals = 'Select your diet plan: ';
     this._loose = 'Loose some fat';

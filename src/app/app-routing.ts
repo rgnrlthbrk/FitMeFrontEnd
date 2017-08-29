@@ -9,7 +9,7 @@ import { UserProfileComponent } from './pages/userprofile_page/userprofile.compo
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { LoginComponent } from './pages/form_login/login.component';
 import { LogoutComponent } from './pages/form_logout/logout.component';
-import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
+import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
 
 import { AuthGuard } from './guards/auth.guard';
 

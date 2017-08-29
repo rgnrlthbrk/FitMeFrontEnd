@@ -1,69 +1,71 @@
-<div class="container">
-  <div class="jumbotron">
-    <div class="main">
-      <div class="row">
-        <h3>{{ registrationBean.title }}</h3>
+<h3>{{ registrationBean.title }}</h3>
 
-        <form [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit(registrationForm.value)" novalidate class="form-horizontal">
+<form [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit(registrationForm.value)"
+      novalidate class="form-horizontal">
 
-          <fieldset class="form-group">
-            <label for="username" class="control-label">{{ registrationBean.labelUsername }}</label>
-              <input formControlName="username"
-                     placeholder="{{ registrationBean.placeholderUsername }}"
-                     type="text" id="username"
-                     class="form-control"/>
-            <div class='form-text error' *ngIf='registrationForm.controls.username.touched'>
-              <div *ngIf="registrationForm.controls.username.hasError('required')">{{ registrationBean.nameRequired }}</div>
-              <div *ngIf="registrationForm.controls.username.hasError('minlength')">{{ registrationBean.nameMinLength }}</div>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-group">
-            <label for="email" class="control-label">{{ registrationBean.labelEmail }}</label>
-              <input formControlName="email"
-                     placeholder="{{ registrationBean.placeholderEmail }}"
-                     type="email" id="email"
-                     class="form-control"/>
-            <div class="form-text error" *ngIf="registrationForm.controls.email.touched">
-              <div *ngIf="registrationForm.controls.email.hasError('required')">{{ registrationBean.emailRequired }}</div>
-              <div *ngIf="registrationForm.controls.email.hasError('invalidEmail')">{{ registrationBean.invalidEmail }}</div>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-group">
-            <label for="password" class="control-label">{{ registrationBean.labelPassword }}</label>
-              <input formControlName="password"
-                     placeholder="{{ registrationBean.placeholderPassword }}"
-                     type="password" id="password"
-                     class="form-control"/>
-            <div class='form-text error' *ngIf="registrationForm.controls.password.touched">
-              <div *ngIf="registrationForm.controls.password.hasError('required')">{{ registrationBean.passwordRequired }}</div>
-              <div *ngIf="registrationForm.controls.password.hasError('minlength')">{{ registrationBean.passwordMinlength }}</div>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-group">
-            <label for="confirmPassword" class="control-label">{{ registrationBean.labelConfirmPassword }}</label>
-              <input formControlName="cpassword"
-                     placeholder="{{ registrationBean.placeholderConfirmPassword }}"
-                     type="password" id="confirmPassword"
-                     class="form-control"/>
-            <div class='form-text error' *ngIf="registrationForm.controls.cpassword.touched">
-              <div *ngIf="registrationForm.hasError('mismatchedPasswords')">{{ registrationBean.mismatchedPasswords }}</div>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-group">
-            <button [disabled]='!registrationForm.valid' type="submit" class="btn btn-primary">{{ registrationBean.submit }}</button>
-          </fieldset>
-
-          <fieldset class="form-group">
-            <div *ngIf="modal" [ngClass]="alert">{{ modal }}</div>
-          </fieldset>
-
-        </form>
+  <fieldset class="form-group">
+    <label for="username" class="control-label">{{ registrationBean.labelUsername }}</label>
+    <input formControlName="username"
+           placeholder="{{ registrationBean.placeholderUsername }}"
+           type="text" id="username"
+           class="form-control"/>
+    <div class='form-text error' *ngIf='registrationForm.controls.username.touched'>
+      <div *ngIf="registrationForm.controls.username.hasError('required')">{{ registrationBean.nameRequired }}
+      </div>
+      <div *ngIf="registrationForm.controls.username.hasError('minlength')">{{ registrationBean.nameMinLength }}
       </div>
     </div>
-  </div>
-</div>
+  </fieldset>
 
+  <fieldset class="form-group">
+    <label for="email" class="control-label">{{ registrationBean.labelEmail }}</label>
+    <input formControlName="email"
+           placeholder="{{ registrationBean.placeholderEmail }}"
+           type="email" id="email"
+           class="form-control"/>
+    <div class="form-text error" *ngIf="registrationForm.controls.email.touched">
+      <div *ngIf="registrationForm.controls.email.hasError('required')">{{ registrationBean.emailRequired }}</div>
+      <div *ngIf="registrationForm.controls.email.hasError('invalidEmail')">{{ registrationBean.invalidEmail }}
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="password" class="control-label">{{ registrationBean.labelPassword }}</label>
+    <input formControlName="password"
+           placeholder="{{ registrationBean.placeholderPassword }}"
+           type="password" id="password"
+           class="form-control"/>
+    <div class='form-text error' *ngIf="registrationForm.controls.password.touched">
+      <div *ngIf="registrationForm.controls.password.hasError('required')">{{ registrationBean.passwordRequired
+        }}
+      </div>
+      <div *ngIf="registrationForm.controls.password.hasError('minlength')">{{ registrationBean.passwordMinlength
+        }}
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="confirmPassword" class="control-label">{{ registrationBean.labelConfirmPassword }}</label>
+    <input formControlName="cpassword"
+           placeholder="{{ registrationBean.placeholderConfirmPassword }}"
+           type="password" id="confirmPassword"
+           class="form-control"/>
+    <div class='form-text error' *ngIf="registrationForm.controls.cpassword.touched">
+      <div *ngIf="registrationForm.hasError('mismatchedPasswords')">{{ registrationBean.mismatchedPasswords }}
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <button [disabled]='!registrationForm.valid' type="submit" class="btn btn-primary">{{ registrationBean.submit
+      }}
+    </button>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <div *ngIf="modal" [ngClass]="alert">{{ modal }}</div>
+  </fieldset>
+
+</form>

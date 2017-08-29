@@ -1,41 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="jumbotron">
-      <div class="main">
-        <h3>{{loginBean.login}}<a routerLink="/registration">{{ loginBean.signup }}</a></h3>
+<h3>{{loginBean.login}}<a routerLink="/registration">{{ loginBean.signup }}</a></h3>
 
-        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" novalidate class="form-horizontal">
+<form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" novalidate
+      class="form-horizontal">
 
-          <fieldset class="form-group">
-            <label for="inputUsername" class="control-label">{{ loginBean.username }}</label>
-            <input formControlName="username"
-                   type="text" id="inputUsername"
-                   placeholder="{{ loginBean.placeholdercredentials }}"
-                   class="form-control"/>
-            <div class='form-text error' *ngIf="loginForm.controls.username.touched">
-              <div *ngIf="loginForm.controls.username.hasError('required')">{{ loginBean.nameRequired }}</div>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-group">
-            <label for="inputPassword" class="control-label">{{ loginBean.password }}</label>
-            <input formControlName="password"
-                   type="password"  id="inputPassword"
-                   placeholder="{{ loginBean.placeholderpassword }}"
-                   class="form-control"/>
-            <div class='form-text error' *ngIf="loginForm.controls.password.touched">
-              <div *ngIf="loginForm.controls.password.hasError('required')">{{ loginBean.passwordRequired }}</div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">{{ loginBean.btnlogin }}</button>
-            <a class="pull-right" href="#">{{ loginBean.forgottenpassword }}</a>
-          </fieldset>
-          <br>
-          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-        </form>
-      </div>
+  <fieldset class="form-group">
+    <label for="inputUsername" class="control-label">{{ loginBean.username }}</label>
+    <input formControlName="username"
+           type="text" id="inputUsername"
+           placeholder="{{ loginBean.placeholdercredentials }}"
+           class="form-control"/>
+    <div class='form-text error' *ngIf="loginForm.controls.username.touched">
+      <div *ngIf="loginForm.controls.username.hasError('required')">{{ loginBean.nameRequired }}</div>
     </div>
-  </div>
-</div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="inputPassword" class="control-label">{{ loginBean.password }}</label>
+    <input formControlName="password"
+           type="password" id="inputPassword"
+           placeholder="{{ loginBean.placeholderpassword }}"
+           class="form-control"/>
+    <div class='form-text error' *ngIf="loginForm.controls.password.touched">
+      <div *ngIf="loginForm.controls.password.hasError('required')">{{ loginBean.passwordRequired }}</div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">{{ loginBean.btnlogin }}</button>
+  </fieldset>
+  <br>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+</form>

@@ -81,7 +81,7 @@ export class LoginBean {
     this._placeholderpassword    = 'Password';
 
 
-    this._nameRequired = 'Username or E-mail is required.';
+    this._nameRequired = 'Username is required.';
     this._passwordRequired = 'Password is required.';
   }
 }

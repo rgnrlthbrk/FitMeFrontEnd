@@ -4,7 +4,7 @@ import { SessionService } from '../../services/session.service';
 
 @Component({
   selector:    'my-app',
-  templateUrl: './notfound.component.html',
+  templateUrl: './pagenotfound.component.html',
 })
 export class PageNotFoundComponent {
   constructor(private _router: Router) {

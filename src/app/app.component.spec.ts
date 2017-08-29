@@ -9,7 +9,7 @@ import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { HomepageComponent } from './pages/home_page/homepage.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { LoginComponent } from './pages/form_login/login.component';
-import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
+import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
 import { NavigationUserComponent } from './pages/bar/header_user/navigationUser.component';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';

@@ -1,5 +1,15 @@
 <nav-bar></nav-bar>
-  <div id="mainContainer" class="container">
-    <router-outlet></router-outlet>
+<div id="mainContainer" class="container">
+  <div id="sideLeft" class="col col-lg-2 col-md-2 col-sm-2">Side Left</div>
+  <div id="body" class="col col-lg-8 col-md-8 col-sm-8">
+    <div class="row">
+      <div class="jumbotron">
+        <div class="main">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
   </div>
+  <div id="sideRight" class="col col-lg-2 col-md-2 col-sm-2">Side Right</div>
+</div>
 <footer-bar></footer-bar>

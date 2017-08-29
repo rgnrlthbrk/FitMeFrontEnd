@@ -2,3 +2,9 @@
   margin-top: 30px;
   margin-bottom: 80px;
 }
+
+@media (min-width: 1200px) {
+  #mainContainer {
+    width:  1500px ;
+  }
+}

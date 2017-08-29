@@ -21,7 +21,7 @@ import { AppModule } from './app.module';
 import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
 import { HomepageComponent } from './pages/home_page/homepage.component';
-import { PageNotFoundComponent } from './pages/notfount_page/notfound.component';
+import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
 import { LoginComponent } from './pages/form_login/login.component';
 
 let comp: AppComponent;

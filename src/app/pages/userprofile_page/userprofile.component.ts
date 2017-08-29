@@ -22,7 +22,7 @@ export class UserProfileComponent implements OnInit {
     if (userName) {
       this._username = userName.username;
     } else {
-      this._username = 'Bai hui';
+      this._username = 'Username is null or not found.';
     }
   }
 }
