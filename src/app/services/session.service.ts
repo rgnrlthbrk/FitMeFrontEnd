@@ -1,6 +1,8 @@
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class SessionService {
 
   private _isUserLogged                   = false;

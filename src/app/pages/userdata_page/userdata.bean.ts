@@ -242,7 +242,7 @@ export class UserdataBean {
         value: 3
       },
       {
-        name:  ' Milk and dairy products',
+        name:  'Milk and dairy products',
         value: 4
       },
       {

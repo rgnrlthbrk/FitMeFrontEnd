@@ -11,13 +11,13 @@ import { LoginComponent } from './pages/form_login/login.component';
 import { LogoutComponent } from './pages/form_logout/logout.component';
 import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
 
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/index';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent },
-  { path: 'user', component: UserDataComponent, canActivate: [ AuthGuard] },
-  { path: 'user/:userName', component: UserProfileComponent, canActivate: [ AuthGuard]  },
+  { path: 'user', component: UserDataComponent, canActivate: [ AuthGuard ] },
+  { path: 'user/:userName', component: UserProfileComponent, canActivate: [ AuthGuard ]  },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },

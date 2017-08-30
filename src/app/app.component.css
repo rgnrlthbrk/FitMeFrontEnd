@@ -3,8 +3,13 @@
   margin-bottom: 80px;
 }
 
+.main {
+  text-align: center;
+  margin: auto;
+}
+
 @media (min-width: 1200px) {
   #mainContainer {
-    width:  1500px ;
+    width: 1500px;
   }
 }

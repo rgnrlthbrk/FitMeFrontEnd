@@ -1,5 +1,7 @@
 import { FormGroup } from '@angular/forms';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class SubscribeForm {
   public events: any[] = [];
 

@@ -8,10 +8,12 @@ footer{
   bottom: 0;
 }
 
-@media (max-height:800px){
-  footer { position: static; }
+input {
+  margin: 0 auto;
+  max-width: 40%;
+  display: block;
 }
 
-
-element.style {
+@media (max-height:800px){
+  footer { position: static; }
 }

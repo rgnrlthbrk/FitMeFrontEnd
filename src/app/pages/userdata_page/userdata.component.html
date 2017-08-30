@@ -1,6 +1,6 @@
 <h3>{{userDataBean.profile}}</h3>
 
-<form [formGroup]="userDataForm" (ngSubmit)="userDataForm.valid && onSubmit(userDataForm.value)" novalidate
+<form [formGroup]="userDataForm" (ngSubmit)="userDataForm.valid" novalidate
       class="form-horizontal">
 
   <fieldset class="form-group">
@@ -53,6 +53,25 @@
   </fieldset>
 
   <fieldset class="form-group">
+    <label for="allergic" class="control-label">{{ userDataBean.allergic }}</label><br>
+    <div id="allergic" class="dropdown">
+      <button id="dropbtn" class="btn btn-primary">{{ userDataBean.add }}</button>
+      <div class="dropdown-content">
+        <div *ngFor="let allergen of userDataBean.allergensList" class="drpdwnHover">
+          <a (click)="addAllergen(allergen)">{{ allergen.name }}</a>
+          <button (click)="removeAllergen(allergen)" class="btn btn-primary drpdwnBtn">X</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <br>
+      <ul *ngFor="let v of allergensArray.value">
+        <li>{{ v.name }}</li>
+      </ul>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
     <label class="control-label">{{ userDataBean.activity }}</label>
     <div class="center-block">
       <label class="radio-inline"><input type="radio" formControlName="activity" value="light">{{
@@ -99,29 +118,16 @@
            class="form-control"/>
   </fieldset>
 
+
   <fieldset class="form-group">
-    <label for="allergic" class="control-label">{{ userDataBean.allergic }}</label><br>
-    <div id="allergic" class="dropdown">
-      <button id="dropbtn" class="btn btn-primary">{{ userDataBean.add }}</button>
-      <div class="dropdown-content">
-        <div *ngFor="let allergen of userDataBean.allergensList" class="drpdwnHover">
-          <a (click)="addAllergens(allergen)">{{ allergen.name }}</a>
-          <button (click)="removeAllergen(allergen)" class="btn btn-primary drpdwnBtn">X</button>
-        </div>
-      </div>
-    </div>
-    <div>
-      <br>
-      <ul *ngFor="let v of allergensArray.value">
-        <li>{{ v.name }}</li>
-      </ul>
-    </div>
+    <button [disabled]='!userDataForm.valid' (click)="onSubmit(userDataForm.value)" class="btn btn-primary">{{ userDataBean.submit }}
+    </button>
   </fieldset>
 
   <fieldset class="form-group">
-    <button [disabled]='!userDataForm.valid' type="submit" class="btn btn-primary">{{ userDataBean.submit }}
-    </button>
+    <div *ngIf="modal" [ngClass]="alert">{{ modal }}</div>
   </fieldset>
+
 
 </form>
 
