@@ -106,7 +106,7 @@ export class RegistrationBean {
     this._labelConfirmPassword = 'Confirm password: ';
 
     this._nameRequired        = 'Name is required.';
-    this._nameMinLength       = 'Name has to be more than 5 symbols.';
+    this._nameMinLength       = 'Name has to be more than 4 symbols.';
     this._emailRequired       = 'Email is required.';
     this._invalidEmail        = 'Email is invalid.';
     this._passwordRequired    = 'Password is required.';

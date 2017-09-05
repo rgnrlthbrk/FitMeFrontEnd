@@ -6,7 +6,7 @@ import { SubscribeForm } from '../../services/subscribeform.service';
 import { UserData } from './userdata.interface';
 import { Allergen } from './allergen.interface';
 import { maxValue, minValue } from '../../validators/index';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/index';
 
 @Component({
   selector:    'userdata-custom',
@@ -35,7 +35,7 @@ export class UserDataComponent implements OnInit {
       console.log(this.userData);
       if (!this.userData) {
         const something = this.userService
-          .createSingleUserData(form)
+          .createUserData(form)
           .then((result) => {
             console.log(result);
             this.modal = result.json().message;
@@ -47,7 +47,7 @@ export class UserDataComponent implements OnInit {
           });
       } else {
         const something = this.userService
-          .updateSingleUserData(form)
+          .updateUserData(form)
           .then((result) => {
             this.modal = result.json().message;
             this.alert = 'alert alert-success';
@@ -103,7 +103,6 @@ export class UserDataComponent implements OnInit {
           Object.keys(object).map((objectKey) => {
             this.addAllergen(object[objectKey] as Allergen);
           });
-          console.log(this.userDataForm.get(key));
         } else {
           this.userDataForm.get(key).markAsDirty();
           this.userDataForm.get(key).setValue(this.userData[ key ]);
@@ -123,14 +122,12 @@ export class UserDataComponent implements OnInit {
       sex:      [ null, Validators.compose([ <any>Validators.required ]) ],
       allergic: this.fb.array([]),
 
-      activity:       [ null, Validators.compose([ <any>Validators.required ]) ],
       activityPeriod: [ null, Validators.compose([ <any>Validators.required ]) ],
 
-      goals:  [ null, Validators.compose([ <any>Validators.required ]) ],
-      period: [ '', Validators.compose([ <any>Validators.required ]) ]
+      goals:  [ null, Validators.compose([ <any>Validators.required ]) ]
     });
 
-    this.userService.getSingleDataUser()
+    this.userService.getUserData()
       .then((result) => {
         this.userData = result;
         this.populateUserData();

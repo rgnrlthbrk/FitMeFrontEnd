@@ -17,20 +17,7 @@ export class UserdataBean {
   get activityPeriod(): string {
     return this._activityPeriod;
   }
-  get heavy(): string {
-    return this._heavy;
-  }
-  get normal(): string {
-    return this._normal;
-  }
-  get light(): string {
-    return this._light;
-  }
-  get activity(): string {
-    return this._activity;
-  }
 
-;
   get add(): string {
     return this._add;
   }
@@ -167,11 +154,6 @@ export class UserdataBean {
   private _submit: string;
   private _add: string;
 
-  private _activity: string;
-  private _light: string;
-  private _normal: string;
-  private _heavy: string;
-
   private _activityPeriod: string;
   private _none: string;
   private _onethree: string;
@@ -200,11 +182,6 @@ export class UserdataBean {
     this._sex    = 'Select your sex: ';
     this._male   = 'Male';
     this._female = 'Female';
-
-    this._activity = 'Select your current kind of activity: ';
-    this._light    = 'Light cardio or yoga';
-    this._normal   = 'Normal training or jogging';
-    this._heavy    = 'Heavy lifting or CrossFit';
 
     this._activityPeriod = 'Select how many day per week you do your training: ';
     this._none           = 'None';
@@ -248,6 +225,10 @@ export class UserdataBean {
       {
         name:  'Shellfish',
         value: 5
+      },
+      {
+        name:  'Starch and starch products',
+        value: 6
       }
     ];
 

@@ -12,7 +12,7 @@ export class UserService {
   }
 
   // Get
-  getSingleDataUser(): Promise<UserData> {
+  getUserData(): Promise<UserData> {
     console.log('getSingleDataUser');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
@@ -31,8 +31,8 @@ export class UserService {
   }
 
   // Post
-  createSingleUserData(userData: UserData): Promise<any> {
-    console.log('createSingleUserData');
+  createUserData(userData: UserData): Promise<any> {
+    console.log('createUserData');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
     return this.http
@@ -49,8 +49,8 @@ export class UserService {
   }
 
   // Put
-  updateSingleUserData(userData: UserData): Promise<any> {
-    console.log('updateSingleUserData');
+  updateUserData(userData: UserData): Promise<any> {
+    console.log('updateUserData');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
     console.log(username);

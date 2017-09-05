@@ -72,18 +72,6 @@
   </fieldset>
 
   <fieldset class="form-group">
-    <label class="control-label">{{ userDataBean.activity }}</label>
-    <div class="center-block">
-      <label class="radio-inline"><input type="radio" formControlName="activity" value="light">{{
-        userDataBean.light }}</label>
-      <label class="radio-inline"><input type="radio" formControlName="activity" value="normal">{{
-        userDataBean.normal }}</label>
-      <label class="radio-inline"><input type="radio" formControlName="activity" value="heavy">{{
-        userDataBean.heavy }}</label>
-    </div>
-  </fieldset>
-
-  <fieldset class="form-group">
     <label class="control-label">{{ userDataBean.activityPeriod }}</label>
     <div class="center-block">
       <label class="radio-inline"><input type="radio" formControlName="activityPeriod" value="none">{{
@@ -112,15 +100,8 @@
   </fieldset>
 
   <fieldset class="form-group">
-    <label for="period" class="control-label">{{ userDataBean.dateDiet }}</label>
-    <input formControlName="period"
-           type="date" id="period"
-           class="form-control"/>
-  </fieldset>
-
-
-  <fieldset class="form-group">
-    <button [disabled]='!userDataForm.valid' (click)="onSubmit(userDataForm.value)" class="btn btn-primary">{{ userDataBean.submit }}
+    <button [disabled]='!userDataForm.valid' (click)="onSubmit(userDataForm.value)" class="btn btn-primary">{{
+      userDataBean.submit }}
     </button>
   </fieldset>
 

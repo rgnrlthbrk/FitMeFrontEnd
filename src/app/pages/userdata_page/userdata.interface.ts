@@ -7,11 +7,7 @@ export interface UserData {
   // checkbox
   sex: string;
   goals: string;
-  activity: string;
   activityPeriod: string;
-
-  // data input
-  period: string;
 
   // dropdown input
   allergic?: Array<string>;

@@ -20,6 +20,9 @@ export class AuthenticationService {
     return this.http
       .post('/login', login)
       .map((response: Response) => {
+        console.log(response.json());
+        console.log(response.json().token);
+        console.log(response.json() && response.json().token);
         const token = response.json() && response.json().token;
         if (token) {
           this.token = token;
