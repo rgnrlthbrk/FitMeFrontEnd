@@ -53,7 +53,6 @@ export class UserService {
     console.log('updateUserData');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
-    console.log(username);
     return this.http
       .put('/user', userData, {
         headers: new Headers({

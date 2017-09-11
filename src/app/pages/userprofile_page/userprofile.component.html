@@ -1,3 +1,13 @@
 <div>
   {{ username }}
+  <div *ngFor="let meal of content" class="card">
+    <div class="card-block">
+      <h4 class="card-title">{{ meal.name }}</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngIf="meal.first" class="list-group-item">{{ meal.first }}</li>
+      <li *ngIf="meal.second" class="list-group-item">{{ meal.second }}</li>
+      <li *ngIf="meal.drink" class="list-group-item">{{ meal.drink }}</li>
+    </ul>
+  </div>
 </div>

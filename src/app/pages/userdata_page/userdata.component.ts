@@ -32,12 +32,10 @@ export class UserDataComponent implements OnInit {
 
   onSubmit(form: UserData): void {
     if (this.userDataForm.valid) {
-      console.log(this.userData);
       if (!this.userData) {
         const something = this.userService
           .createUserData(form)
           .then((result) => {
-            console.log(result);
             this.modal = result.json().message;
             this.alert = 'alert alert-success';
           })
@@ -67,9 +65,7 @@ export class UserDataComponent implements OnInit {
     const tmpAllergen = this.allergens.find((element) => {
       return element.name === allergen.name && element.value === allergen.value;
     });
-    console.log(tmpAllergen);
     if (!tmpAllergen) {
-      console.log(allergen);
       this.allergens.push(allergen);
       this.setAllergens(this.allergens);
     }
@@ -79,7 +75,6 @@ export class UserDataComponent implements OnInit {
     this.allergens = this.allergens.filter((element) => {
       return element.name !== allergen.name && element.value !== allergen.value;
     });
-    console.log(this.allergens);
     this.setAllergens(this.allergens);
   }
 
