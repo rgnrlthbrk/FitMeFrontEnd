@@ -13,7 +13,6 @@ export class UserProfileComponent implements OnInit {
   public content: any;
 
   constructor(private userProfileService: UserProfileService) {
-    console.log('UserProfileComponent');
   }
 
   get username(): any {
@@ -27,7 +26,6 @@ export class UserProfileComponent implements OnInit {
         if (result[key]) {
           let arr = result[key];
           let randomIndex = Math.floor(Math.random() * arr.length);
-          console.log(arr[randomIndex])
           let obj = {};
           obj['name'] = key;
           obj['first'] = this.convertReadableMeal(arr[randomIndex].first);
@@ -46,22 +44,21 @@ export class UserProfileComponent implements OnInit {
     if (!obj.subMeal) return null;
     let typeOfQuantity = obj.subMeal.quantity;
     let mealStr = '';
-    let a = {'0.25': 'quarter', '0.5': 'half', '0.75': '3/4'};
-    console.log('typeOfQuantity: '+typeOfQuantity );
-    if (typeOfQuantity.indexOf('ml') !== -1){
-      mealStr = obj.count*100 + 'ml' + ' of fresh ' + obj.subMeal.name + '; calories: ' + obj.calories;
+    let a = { '0.25': 'quarter', '0.5': 'half', '0.75': '3/4' };
+    if (typeOfQuantity.indexOf('ml') !== -1) {
+      mealStr = obj.count * 100 + 'ml' + ' of fresh ' + obj.subMeal.name + '; calories: ' + obj.calories;
     } else if (typeOfQuantity.indexOf('g') !== -1) {
-      mealStr = obj.count*100 + 'g' + ' of ' +  obj.subMeal.name + '; calories: ' + obj.calories;
+      mealStr = obj.count * 100 + 'g' + ' of ' + obj.subMeal.name + '; calories: ' + obj.calories;
     } else {
       let fraction = obj.count % 1;
       let number = '';
-      if (a[''+fraction]) {
+      if (a['' + fraction]) {
         if (Math.floor(obj.count)) {
-          number =  Math.floor(obj.count) + ' and a ' + a[''+fraction];
+          number = Math.floor(obj.count) + ' and a ' + a['' + fraction];
         }
-        number = a[''+fraction];
+        number = a['' + fraction];
       }
-      mealStr = number + ' ' +  obj.subMeal.name + '; calories: ' + obj.calories;
+      mealStr = number + ' ' + obj.subMeal.name + '; calories: ' + obj.calories;
     }
     return mealStr;
   }

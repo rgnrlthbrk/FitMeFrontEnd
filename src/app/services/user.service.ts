@@ -13,7 +13,6 @@ export class UserService {
 
   // Get
   getUserData(): Promise<UserData> {
-    console.log('getSingleDataUser');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
     return this.http.get('/user', {
@@ -32,7 +31,6 @@ export class UserService {
 
   // Post
   createUserData(userData: UserData): Promise<any> {
-    console.log('createUserData');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
     return this.http
@@ -50,7 +48,6 @@ export class UserService {
 
   // Put
   updateUserData(userData: UserData): Promise<any> {
-    console.log('updateUserData');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
     return this.http

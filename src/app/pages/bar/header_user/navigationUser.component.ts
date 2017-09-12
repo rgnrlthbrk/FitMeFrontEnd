@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SessionService } from '../../../services/session.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Link } from '../../../beans/link.bean';
+import { Link } from '../link.bean';
 
 @Component({
   selector:    'nav-user-bar',

@@ -15,13 +15,13 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     const username = JSON.parse(localStorage.getItem('currentUser'));
-    const token    = JSON.parse(localStorage.getItem('currentUserToken')); // should be .token, but... undefined
+    const token    = JSON.parse(localStorage.getItem('currentUserToken'));
 
     if (username && token) {
       this.router.navigate([ '/user/' + username.username ]);
     }
 
     this.message = 'FitMe';
-    this.content = 'Your online 90 day menú';
+    this.content = 'Your online menú';
   }
 }

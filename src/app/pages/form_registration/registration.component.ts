@@ -25,7 +25,6 @@ export class RegistrationComponent implements OnInit {
               private fb: FormBuilder,
               private form: SubscribeForm,
               private http: Http) {
-    console.log('RegistrationComponent');
   }
 
   onSubmit(form: Registration): void {

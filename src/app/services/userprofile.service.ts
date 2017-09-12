@@ -13,7 +13,6 @@ export class UserProfileService {
 
   // Get
   getUserProfileAllMenuData(): Promise<UserProfileBean> {
-    console.log('getUserProfileAllMenuData');
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
     return this.http.get('/user/' + username, {

@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
               public sessionService: SessionService,
               public router: Router,
               private authenticationService: AuthenticationService) {
-    console.log('LoginComponent');
   }
 
   onSubmit(form: Login): void {

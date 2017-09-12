@@ -11,7 +11,7 @@ import { AuthenticationService } from './services/authentication.service';
 export class AppComponent {
   constructor(private sessionService: SessionService,
               private authenticationService: AuthenticationService) {
-    console.log('AppComponent');
+
     const isLogged = this.sessionService.isUserLogged;
     if (!isLogged) {
       this.authenticationService.logout();
