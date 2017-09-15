@@ -1,9 +1,7 @@
 export interface UserProfileBean {
-  username: String;
-  breakfast: Array<any>;
-  brunch: Array<any>;
-  lunch: Array<any>;
-  snack?: Array<any>;
-  dinner: Array<any>;
-
+  breakfast: any;
+  brunch: any;
+  lunch: any;
+  snack?: any;
+  dinner: any;
 }

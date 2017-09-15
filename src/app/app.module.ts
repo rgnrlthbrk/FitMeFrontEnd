@@ -17,7 +17,7 @@ import { UserProfileComponent } from './pages/userprofile_page/userprofile.compo
 
 import { BarModule } from './pages/bar/bar.module';
 
-import { AuthenticationService, SessionService, UserService } from './services/index';
+import { AuthenticationService, SessionService, UserService, MenuService } from './services/index';
 import { AuthGuard } from './guards/index';
 
 @NgModule({
@@ -44,7 +44,8 @@ import { AuthGuard } from './guards/index';
     AuthGuard,
     SessionService,
     AuthenticationService,
-    UserService
+    UserService,
+    MenuService
   ],
   bootstrap:    [ AppComponent ]
 })

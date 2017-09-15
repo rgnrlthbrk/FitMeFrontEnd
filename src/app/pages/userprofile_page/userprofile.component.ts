@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfileService } from './../../services/index'
+import { MenuService } from './../../services/index'
 
 @Component({
              selector: 'userprofile-custom',
              templateUrl: './userprofile.component.html',
-             styleUrls: ['./userprofile.component.css'],
-             providers: [UserProfileService]
+             styleUrls: ['./userprofile.component.css']
            })
 
 export class UserProfileComponent implements OnInit {
   private _username: any;
   public content: any;
 
-  constructor(private userProfileService: UserProfileService) {
+  constructor(private userProfileService: MenuService) {
   }
 
   get username(): any {
@@ -70,9 +69,11 @@ export class UserProfileComponent implements OnInit {
     } else {
       this._username = userName.username;
       this.userProfileService
-          .getUserProfileAllMenuData()
+          // .getUserProfileAllMenuData()
+          .getMenuData('today')
           .then((result) => {
-            this.content = this.parseResult(result);
+            result['name'] = userName;
+            this.content = result;
           })
           .catch((err) => {
             console.log('Error: ' + err);

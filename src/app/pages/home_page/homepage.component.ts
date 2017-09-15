@@ -22,6 +22,6 @@ export class HomepageComponent implements OnInit {
     }
 
     this.message = 'FitMe';
-    this.content = 'Your online menú';
+    this.content = 'Your online daily menú';
   }
 }
