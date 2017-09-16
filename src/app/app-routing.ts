@@ -7,6 +7,7 @@ import { HomepageComponent } from './pages/home_page/homepage.component';
 import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
+import { TomorrowComponent } from './pages/tomorrow_page/tomorrow.component';
 import { LoginComponent } from './pages/form_login/login.component';
 import { LogoutComponent } from './pages/form_logout/logout.component';
 import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'user', component: UserDataComponent, canActivate: [ AuthGuard ] },
   { path: 'user/:userName', component: UserProfileComponent, canActivate: [ AuthGuard ]  },
+  { path: 'user/:userName/tomorrow', component: TomorrowComponent, canActivate: [ AuthGuard ]  },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },

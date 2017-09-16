@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from './../../services/index'
 
 @Component({
-             selector: 'userprofile-custom',
-             templateUrl: './userprofile.component.html',
-             styleUrls: ['./userprofile.component.css']
+             selector: 'tomorrow-custom',
+             templateUrl: './tomorrow.component.html',
+             styleUrls: ['./tomorrow.component.css']
            })
 
-export class UserProfileComponent implements OnInit {
+export class TomorrowComponent implements OnInit {
   private _username: any;
   public content: any;
 
@@ -26,7 +26,7 @@ export class UserProfileComponent implements OnInit {
       this._username = userName.username;
       this.userProfileService
           // .getUserProfileAllMenuData()
-          .getMenuData('today')
+          .getMenuData('tomorrow')
           .then((result) => {
             result['name'] = userName;
             this.content = result;

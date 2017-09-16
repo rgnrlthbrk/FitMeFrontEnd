@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import { DragScrollModule } from 'angular2-drag-scroll/src/angular2-drag-scroll';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -10,10 +11,11 @@ import { AppComponent } from './app.component';
 import { UserDataComponent } from './pages/userdata_page/userdata.component';
 import { HomepageComponent } from './pages/home_page/homepage.component';
 import { RegistrationComponent } from './pages/form_registration/registration.component';
+import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
+import { TomorrowComponent } from './pages/tomorrow_page/tomorrow.component';
 import { LoginComponent } from './pages/form_login/login.component';
 import { LogoutComponent } from './pages/form_logout/logout.component';
 import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
-import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
 
 import { BarModule } from './pages/bar/bar.module';
 
@@ -26,6 +28,7 @@ import { AuthGuard } from './guards/index';
     HomepageComponent,
     UserDataComponent,
     UserProfileComponent,
+    TomorrowComponent,
     RegistrationComponent,
     LoginComponent,
     LogoutComponent,
@@ -37,6 +40,7 @@ import { AuthGuard } from './guards/index';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    DragScrollModule,
     BarModule,
     HttpModule
   ],

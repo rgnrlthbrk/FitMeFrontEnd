@@ -31,6 +31,7 @@ export class NavigationComponent implements OnInit{
       new Link('Profile', '/',      'glyphicon glyphicon-user',   'nav navbar-nav navbar-right', false),
     ];
     this._profileLinks = [
+      new Link('Menu for tomorrow', '/user/:userName/tomorrow',  '', '', false),
       new Link('Edit profile', '/user',  '', '', false),
       new Link('Logout',       '/logout', '', '', false)
     ];
