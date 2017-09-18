@@ -1,0 +1,14 @@
+<button (click) ="save()" class="btn btn-primary">Save changes</button>
+<button (click) ="cancel()" class="btn btn-primary">Cancel</button>
+<div #refmain drag-scroll class="bot">
+  <div *ngFor="let piece of carouselImageArr[tmpMeal]" style="border: 1px;">
+    <div myHover (click) = "onClickCustom(piece)" class="element">
+      <div *ngIf="piece" class="a1">
+        <img class="a" src="{{ piece.image1 }}" width="100" height="100">
+      </div>
+      <div *ngIf="piece" class="b1">
+        <img class="b" src="{{ piece.image2 }}" width="100" height="100">
+      </div>
+    </div>
+  </div>
+</div>

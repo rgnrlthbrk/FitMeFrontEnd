@@ -26,18 +26,18 @@ export class MenuService {
                  })
                .toPromise()
                .then((response) => {
-                 return response.json().content[0] as UserProfileBean;
+                 return response.json().content as UserProfileBean;
                })
                .catch(this.handleError);
   }
 
 
   // Get
-  getMenuData(date): Promise<UserProfileBean> {
+  getMenuData(result): Promise<UserProfileBean> {
     const username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token = JSON.parse(localStorage.getItem('currentUserToken')).token;
     return this.http
-               .get('/user/' + username + '/' + date,
+               .get(result,
                  {
                    headers: new Headers({
                                           'Content-Type': 'application/json',
@@ -49,6 +49,24 @@ export class MenuService {
                .then((response) => {
                  return response.json().content as UserProfileBean;
                })
+               .catch(this.handleError);
+  }
+
+  // Put
+  updateMenuData(content): Promise<any> {
+    const username = JSON.parse(localStorage.getItem('currentUser')).username;
+    const token = JSON.parse(localStorage.getItem('currentUserToken')).token;
+    return this.http
+               .put('/tomorrowMenu', content,
+                    {
+                      headers: new Headers({
+                                             'Content-Type': 'application/json',
+                                             'username': username,
+                                             'x-access-token': token
+                                           })
+                    })
+               .toPromise()
+               .then((response) => response)
                .catch(this.handleError);
   }
 

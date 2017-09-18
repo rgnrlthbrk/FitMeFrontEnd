@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { SessionService } from './services/session.service';
 import { AuthenticationService } from './services/authentication.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector:    'app-root',
@@ -9,6 +10,9 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls:   [ './app.component.css' ]
 })
 export class AppComponent {
+  subscription: Subscription;
+  visible: boolean;
+
   constructor(private sessionService: SessionService,
               private authenticationService: AuthenticationService) {
 
