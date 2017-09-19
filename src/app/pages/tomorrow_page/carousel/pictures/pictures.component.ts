@@ -4,9 +4,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { DragScroll } from 'angular2-drag-scroll/src/angular2-drag-scroll';
-import { MenuService } from '../../../../services/menu.service';
-import { ParseService } from '../../../../services/parse.service';
-import { MealService } from '../../../../services/meal.service';
+import { MenuService, ParseService, MealService} from '../../../../services/index';
 
 @Component({
              selector: 'pictures-custom',
@@ -63,12 +61,9 @@ export class PicturesComponent implements OnChanges, AfterViewInit, OnDestroy {
   save() {
     if (this.clicked) {
 
-      console.log('update menu data')
       this.menuService
           .updateMenuData(this.mealService.food_data_obj)
           .then((response) => {
-            console.log('i pak response:');
-            console.log(response);
           })
           .catch((err) => {
             console.log('Error: ' + err)
@@ -86,8 +81,6 @@ export class PicturesComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes');
-    console.log(changes);
     if (this.flag) {
       this.flag = false;
 
@@ -108,12 +101,9 @@ export class PicturesComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit')
     this.tmpCurrentMenu = this.mealService.food_data_obj;
-    console.log(this.mealService.food_data_obj);
     this.flag = true;
     this.active = true;
-    console.log('ngAfterViewInit endeeeeeeeeeeeeed')
   }
 
   ngOnDestroy(): void {

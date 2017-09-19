@@ -4,7 +4,6 @@ import { Http } from '@angular/http';
 
 import { RegistrationBean } from './registration.bean';
 import { Registration } from './registration.interface';
-import { SubscribeForm } from '../../services/subscribeform.service';
 
 import { emailValidator, matchingPasswords } from '../../validators/index';
 
@@ -12,18 +11,17 @@ import { emailValidator, matchingPasswords } from '../../validators/index';
   selector:    'registration-custom',
   templateUrl: './registration.component.html',
   styleUrls:   [ './registration.component.css' ],
-  providers:   [ RegistrationBean, SubscribeForm ]
+  providers:   [ RegistrationBean ]
 })
 
 export class RegistrationComponent implements OnInit {
 
   public registrationForm: FormGroup;
-  private modal: any;
-  private alert: any;
+  public modal: any;
+  public alert: any;
 
   constructor(public registrationBean: RegistrationBean,
               private fb: FormBuilder,
-              private form: SubscribeForm,
               private http: Http) {
   }
 
@@ -55,6 +53,5 @@ export class RegistrationComponent implements OnInit {
       cpassword: [ '', <any>Validators.required ]
     }, { validator: matchingPasswords('password', 'cpassword') });
 
-    this.form.subcribeToFormChanges(this.registrationForm);
   }
 }

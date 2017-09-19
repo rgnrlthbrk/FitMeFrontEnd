@@ -48,18 +48,22 @@ export class CarouselComponent implements AfterViewInit, OnDestroy, OnChanges {
       let keys = Object.keys(this.carouselContent);
       keys.forEach((key) => {
         this.carouselImageArr['' + key] = [];
-        let index = 0;
-        this.carouselContent[key].forEach((meal) => {
-          let obj = {
-            index: index,
-            image1: meal.first.subMeal.image,
-            image2: meal.second.subMeal.image,
-            name1: meal.first.subMeal.name,
-            name2: meal.second.subMeal.name
-          };
-          index++;
-          this.carouselImageArr['' + key].push(obj);
-        });
+        if (!this.carouselContent[key]) {
+          console.log('this nigga undefined')
+        } else {
+          let index = 0;
+          this.carouselContent[key].forEach((meal) => {
+            let obj = {
+              index: index,
+              image1: meal.first.subMeal.image,
+              image2: meal.second.subMeal.image,
+              name1: meal.first.subMeal.name,
+              name2: meal.second.subMeal.name
+            };
+            index++;
+            this.carouselImageArr['' + key].push(obj);
+          });
+        }
       });
       this.mealService.carouselImageArr = this.carouselImageArr;
     } else {
@@ -74,7 +78,6 @@ export class CarouselComponent implements AfterViewInit, OnDestroy, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit')
     this.carouselImageArr = [];
     this.userProfileService
         .getUserProfileAllMenuData()

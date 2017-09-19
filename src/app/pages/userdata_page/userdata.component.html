@@ -10,9 +10,9 @@
            placeholder="{{ userDataBean.placeholderAge }}"
            class="form-control"/>
     <div class='form-text error' *ngIf='userDataForm.controls.age.touched'>
-      <div *ngIf="userDataForm.controls.age.hasError('required')">{{ userDataBean.ageRequired }}</div>
-      <div *ngIf="userDataForm.controls.age.hasError('minValue')">{{ userDataBean.ageNonValid}}</div>
-      <div *ngIf="userDataForm.controls.age.hasError('maxValue')">{{ userDataBean.ageNonValid }}</div>
+      <label *ngIf="userDataForm.controls.age.hasError('required')">{{ userDataBean.ageRequired }}</label>
+      <label *ngIf="userDataForm.controls.age.hasError('minValue')">{{ userDataBean.ageNonValid}}</label>
+      <label *ngIf="userDataForm.controls.age.hasError('maxValue')">{{ userDataBean.ageNonValid }}</label>
     </div>
   </fieldset>
 
@@ -23,9 +23,9 @@
            placeholder="{{ userDataBean.placeholderHeight }}"
            class="form-control"/>
     <div class='form-text error' *ngIf='userDataForm.controls.height.touched'>
-      <div *ngIf="userDataForm.controls.height.hasError('required')">{{ userDataBean.heightRequired }}</div>
-      <div *ngIf="userDataForm.controls.height.hasError('minValue')">{{ userDataBean.heightNonValid}}</div>
-      <div *ngIf="userDataForm.controls.height.hasError('maxValue')">{{ userDataBean.heightNonValid }}</div>
+      <label *ngIf="userDataForm.controls.height.hasError('required')">{{ userDataBean.heightRequired }}</label>
+      <label *ngIf="userDataForm.controls.height.hasError('minValue')">{{ userDataBean.heightNonValid}}</label>
+      <label *ngIf="userDataForm.controls.height.hasError('maxValue')">{{ userDataBean.heightNonValid }}</label>
     </div>
   </fieldset>
 
@@ -36,19 +36,17 @@
            placeholder="{{ userDataBean.placeholderKilos }}"
            class="form-control"/>
     <div class='form-text error' *ngIf='userDataForm.controls.kilos.touched'>
-      <div *ngIf="userDataForm.controls.kilos.hasError('required')">{{ userDataBean.kilosRequired }}</div>
-      <div *ngIf="userDataForm.controls.kilos.hasError('minValue')">{{ userDataBean.kilosNonValid}}</div>
-      <div *ngIf="userDataForm.controls.kilos.hasError('maxValue')">{{ userDataBean.kilosNonValid }}</div>
+      <label *ngIf="userDataForm.controls.kilos.hasError('required')">{{ userDataBean.kilosRequired }}</label>
+      <label *ngIf="userDataForm.controls.kilos.hasError('minValue')">{{ userDataBean.kilosNonValid}}</label>
+      <label *ngIf="userDataForm.controls.kilos.hasError('maxValue')">{{ userDataBean.kilosNonValid }}</label>
     </div>
   </fieldset>
 
   <fieldset class="form-group">
     <label class="control-label">{{ userDataBean.sex }}</label>
     <div class="center-block">
-      <label class="radio-inline"><input type="radio" formControlName="sex" value="male">{{ userDataBean.male
-        }}</label>
-      <label class="radio-inline"><input type="radio" formControlName="sex" value="female">{{
-        userDataBean.female }}</label>
+      <label class="radio-inline"><input type="radio" formControlName="sex" value="male">{{ userDataBean.male }}</label>
+      <label class="radio-inline"><input type="radio" formControlName="sex" value="female">{{userDataBean.female }}</label>
     </div>
   </fieldset>
 

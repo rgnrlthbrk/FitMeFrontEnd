@@ -34,3 +34,29 @@
   display: block;
 }
 
+
+nav-user-bar {
+  margin-right: 16%;
+  float: right;
+}
+
+.navbar-nav>li>a {
+  color: #fff;
+}
+
+.navbar-nav>li>a:hover {
+  color: #000;
+}
+
+.dropdown .dropbtn {
+  background: #292c2f !important;
+  color: #000 !important;
+}
+
+.dropdown-content {
+  background: #292c2f !important;
+}
+
+.dropdown-content a {
+  color: #fff;
+}

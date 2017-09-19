@@ -6,13 +6,13 @@ import { Subscription } from 'rxjs/Subscription';
 import { LoginBean } from './login.bean';
 import { Login } from './login.interface';
 
-import { AuthenticationService, SessionService, SubscribeForm } from '../../services/index';
+import { AuthenticationService, SessionService } from '../../services/index';
 
 @Component({
   selector:    'login-custom',
   templateUrl: './login.component.html',
   styleUrls:   [ './login.component.css' ],
-  providers:   [ LoginBean, SubscribeForm ]
+  providers:   [ LoginBean ]
 })
 
 export class LoginComponent implements OnInit {
@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   constructor(public loginBean: LoginBean,
               private fb: FormBuilder,
-              private subscribeForm: SubscribeForm,
               public sessionService: SessionService,
               public router: Router,
               private authenticationService: AuthenticationService) {
@@ -70,7 +69,5 @@ export class LoginComponent implements OnInit {
       username: [ '', Validators.compose([ <any>Validators.required ]) ],
       password: [ '', Validators.compose([ <any>Validators.required ]) ],
     });
-
-    this.subscribeForm.subcribeToFormChanges(this.loginForm);
   }
 }

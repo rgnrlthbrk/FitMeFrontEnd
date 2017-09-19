@@ -8,8 +8,6 @@ export class ParseService {
 
     if (menu) {
       let arr = menu;
-      console.log('arr')
-      console.log(arr)
       obj['name'] = name;
       let first = arr.first;
       obj['first'] = this.convertReadableMeal(first);

@@ -14,18 +14,17 @@ import { RegistrationComponent } from './pages/form_registration/registration.co
 import { UserProfileComponent } from './pages/userprofile_page/userprofile.component';
 import { TomorrowComponent } from './pages/tomorrow_page/tomorrow.component';
 import { CarouselComponent } from './pages/tomorrow_page/carousel/carousel.component';
+import { PicturesComponent } from './pages/tomorrow_page/carousel/pictures/pictures.component';
 import { LoginComponent } from './pages/form_login/login.component';
 import { LogoutComponent } from './pages/form_logout/logout.component';
 import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
 
+import { HoverDirective } from './pages/tomorrow_page/hover.directive';
+
 import { BarModule } from './pages/bar/bar.module';
 
-import { AuthenticationService, SessionService, UserService, MenuService } from './services/index';
+import { AuthenticationService, SessionService, UserService, MenuService, ParseService, MealService } from './services/index';
 import { AuthGuard } from './guards/index';
-import { PicturesComponent } from './pages/tomorrow_page/carousel/pictures/pictures.component';
-import { HoverDirective } from './pages/tomorrow_page/hover.directive';
-import { ParseService } from './services/parse.service';
-import { MealService } from './services/meal.service';
 
 @NgModule({
   declarations: [

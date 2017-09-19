@@ -14,7 +14,7 @@
       <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div *ngFor="let meal of tabArr" class="btn-group" role="group">
           <button type="button" (click)="selectMeal(meal)" [ngClass]="meal.btn">
-            <div class="hidden-xs">{{ meal.name }}</div>
+            <label class="hidden-xs">{{ meal.name }}</label>
           </button>
         </div>
       </div>

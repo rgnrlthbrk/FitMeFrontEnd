@@ -1,11 +1,25 @@
 #mainContainer {
-  margin-top: 30px;
-  margin-bottom: 80px;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 }
 
 .main {
   text-align: center;
   margin: auto;
+}
+
+.jumbotron {
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+}
+
+.jumbotron h1,
+.jumbotron h2 {
+  color: #fff;
 }
 
 @media (min-width: 1200px) {

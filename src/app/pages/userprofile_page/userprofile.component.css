@@ -20,6 +20,7 @@
 .artist-title {
   padding: 15px;
   background: #fff;
+  border-radius: 5px;
 }
 
 .artist-title a {
@@ -35,11 +36,12 @@
 
 .artist-collage img {
   max-width: 100%;
+  border-radius: 0 40% 0 40%;
+  margin: 20px 0;
 }
 
 .artist-collage {
   position: relative;
-  max-height: 150px;
   overflow: hidden;
 }
 
@@ -114,8 +116,14 @@ span.play-mix-btn:hover {
   border-bottom: 1px solid #eee;
   padding: 8px;
   padding-left: 20px;
-  font-size: 13px;
-  color: #666;
+  font-size: 15px;
+  background: #00e872;
+  font-weight: bold;
+}
+
+.btn-group>.btn-group button {
+  font-weight: bold !important;
+  border-color: #ccc !important;
 }
 
 .listing-tab .tab-content ul li a {
@@ -158,4 +166,11 @@ span.play-mix-btn:hover {
 
 .listing-tab {
   background-color: #fff;
+}
+
+
+label,
+h3,
+li {
+  color: #000 !important;
 }

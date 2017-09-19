@@ -6,7 +6,7 @@
     <div class="dropdown">
       <button class="dropbtn">{{ link.nameLink }}</button>
       <div class="dropdown-content">
-        <a  *ngFor="let pLink of pLinks" [routerLink]="pLink.urlLink">{{ pLink.nameLink }}</a>
+        <label><a  *ngFor="let pLink of pLinks" [routerLink]="pLink.urlLink">{{ pLink.nameLink }}</a></label>
       </div>
     </div>
   </li>

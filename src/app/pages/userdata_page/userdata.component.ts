@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserdataBean } from './userdata.bean';
-import { SubscribeForm } from '../../services/subscribeform.service';
 import { UserData } from './userdata.interface';
 import { Allergen } from './allergen.interface';
 import { maxValue, minValue } from '../../validators/index';
@@ -12,7 +11,7 @@ import { UserService } from '../../services/index';
   selector:    'userdata-custom',
   templateUrl: './userdata.component.html',
   styleUrls:   [ './userdata.component.css' ],
-  providers:   [ UserdataBean, SubscribeForm ]
+  providers:   [ UserdataBean ]
 })
 
 export class UserDataComponent implements OnInit {
@@ -26,14 +25,13 @@ export class UserDataComponent implements OnInit {
 
   constructor(public userDataBean: UserdataBean,
               private fb: FormBuilder,
-              private form: SubscribeForm,
               private userService: UserService) {
   }
 
   onSubmit(form: UserData): void {
     if (this.userDataForm.valid) {
       if (!this.userData) {
-        const something = this.userService
+        this.userService
           .createUserData(form)
           .then((result) => {
             this.modal = result.json().message;
@@ -99,8 +97,10 @@ export class UserDataComponent implements OnInit {
             this.addAllergen(object[objectKey] as Allergen);
           });
         } else {
-          this.userDataForm.get(key).markAsDirty();
-          this.userDataForm.get(key).setValue(this.userData[ key ]);
+          if (['userCalories', 'food_data', 'food_menu', 'food_menu_past'].indexOf(key) === -1) {
+            this.userDataForm.get(key).markAsDirty();
+            this.userDataForm.get(key).setValue(this.userData[ key ]);
+          }
         }
       });
     }, 500);
@@ -131,7 +131,6 @@ export class UserDataComponent implements OnInit {
         console.log(error);
       });
 
-    this.form.subcribeToFormChanges(this.userDataForm);
   }
 
 }

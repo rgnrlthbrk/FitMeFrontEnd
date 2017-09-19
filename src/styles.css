@@ -1,6 +1,7 @@
 body{
-  background-color: lightgray;
   font:14px/1.5 Arial, Helvetica, sans-serif;
+  background: url('/img/cutting_board');
+  background-size: cover;
 }
 
 footer{
@@ -14,6 +15,24 @@ input {
   display: block;
 }
 
+.btn-primary {
+  background: #ff5252 !important;
+}
+
+button:focus {
+  outline: none !important;
+}
+
 @media (max-height:800px){
   footer { position: static; }
+}
+
+h1,
+h2,
+h3,
+h4,
+li,
+label
+{
+  color: #ccc !important;
 }

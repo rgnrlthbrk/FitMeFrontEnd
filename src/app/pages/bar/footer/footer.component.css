@@ -58,6 +58,32 @@
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
+.footer-distributed .footer-right a:nth-child(1) {
+  background-color: #3b5998;
+}
+
+
+.footer-distributed .footer-right a:nth-child(2) {
+  background-color: #1da1f2;
+}
+
+.footer-distributed .footer-right a:nth-child(3) {
+  background-color: #0077b5;
+}
+
+.footer-distributed .footer-right a:nth-child(4) {
+  background-color: #333;
+}
+
+.footer-distributed .footer-left {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.footer-distributed p.footer-links {
+  color: #fff;
+}
+
 @media (max-width: 600px) {
 
   .footer-distributed .footer-left,

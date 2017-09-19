@@ -10,7 +10,7 @@
            placeholder="{{ loginBean.placeholdercredentials }}"
            class="form-control"/>
     <div class='form-text error' *ngIf="loginForm.controls.username.touched">
-      <div *ngIf="loginForm.controls.username.hasError('required')">{{ loginBean.nameRequired }}</div>
+      <label *ngIf="loginForm.controls.username.hasError('required')">{{ loginBean.nameRequired }}</label>
     </div>
   </fieldset>
 
@@ -21,7 +21,7 @@
            placeholder="{{ loginBean.placeholderpassword }}"
            class="form-control"/>
     <div class='form-text error' *ngIf="loginForm.controls.password.touched">
-      <div *ngIf="loginForm.controls.password.hasError('required')">{{ loginBean.passwordRequired }}</div>
+      <label *ngIf="loginForm.controls.password.hasError('required')">{{ loginBean.passwordRequired }}</label>
     </div>
   </fieldset>
 
@@ -29,5 +29,5 @@
     <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">{{ loginBean.btnlogin }}</button>
   </fieldset>
   <br>
-  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  <label *ngIf="error" class="alert alert-danger">{{error}}</label>
 </form>
