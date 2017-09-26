@@ -10,8 +10,6 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls:   [ './app.component.css' ]
 })
 export class AppComponent {
-  subscription: Subscription;
-  visible: boolean;
 
   constructor(private sessionService: SessionService,
               private authenticationService: AuthenticationService) {

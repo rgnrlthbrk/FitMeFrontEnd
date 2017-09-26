@@ -28,8 +28,6 @@ export class PicturesComponent implements OnChanges, AfterViewInit, OnDestroy {
   dragScrollRef: ElementRef;
   dragScroll: DragScroll;
 
-  @Output() myClick: EventEmitter<any> = new EventEmitter();
-
   constructor(private cdr: ChangeDetectorRef,
               private element: ElementRef,
               private renderer: Renderer,
@@ -68,14 +66,6 @@ export class PicturesComponent implements OnChanges, AfterViewInit, OnDestroy {
           .catch((err) => {
             console.log('Error: ' + err)
           });
-      this.clicked = false;
-    }
-  }
-
-  cancel() {
-
-    if (this.clicked) {
-      this.mealService.food_data_obj = this.tmpCurrentMenu;
       this.clicked = false;
     }
   }

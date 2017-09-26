@@ -1,11 +1,9 @@
 import {
   AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnDestroy, Output,
-  Renderer,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { MenuService } from '../../../services/index'
-import { DragScroll } from 'angular2-drag-scroll/src/angular2-drag-scroll';
 import { MealService } from '../../../services/meal.service';
 
 @Component({
@@ -48,9 +46,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy, OnChanges {
       let keys = Object.keys(this.carouselContent);
       keys.forEach((key) => {
         this.carouselImageArr['' + key] = [];
-        if (!this.carouselContent[key]) {
-          console.log('this nigga undefined')
-        } else {
+        if (this.carouselContent[key]) {
           let index = 0;
           this.carouselContent[key].forEach((meal) => {
             let obj = {

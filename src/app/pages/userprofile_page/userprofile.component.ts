@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   public currentMenu: any;
   public wid: any;
 
-  constructor(private userProfileService: MenuService) {
+  constructor(private MenuService: MenuService) {
   }
 
   get username(): any {
@@ -54,7 +54,7 @@ export class UserProfileComponent implements OnInit {
       this._username = 'Username is null or not found.';
     } else {
       this._username = userName.username;
-      this.userProfileService
+      this.MenuService
           // .carouselContent()
           .getMenuData('user/' +this._username + '/today')
           .then((result) => {

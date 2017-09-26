@@ -122,7 +122,7 @@ export class UserDataComponent implements OnInit {
       goals:  [ null, Validators.compose([ <any>Validators.required ]) ]
     });
 
-    this.userService.getUserData()
+    this.userService.getUserData(null)
       .then((result) => {
         this.userData = result;
         this.populateUserData();

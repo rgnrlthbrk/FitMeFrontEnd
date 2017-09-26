@@ -12,9 +12,12 @@ export class UserService {
   }
 
   // Get
-  getUserData(): Promise<UserData> {
-    const username = JSON.parse(localStorage.getItem('currentUser')).username;
+  getUserData(name): Promise<UserData> {
+    let username = JSON.parse(localStorage.getItem('currentUser')).username;
     const token    = JSON.parse(localStorage.getItem('currentUserToken')).token;
+    if (name) {
+      username = name;
+    }
     return this.http.get('/user', {
       headers: new Headers({
         'Content-Type':   'application/json',

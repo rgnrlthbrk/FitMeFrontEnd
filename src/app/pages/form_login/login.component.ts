@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         .then(result => {
           if (result === true) {
             this.sessionService.logUser(true);
-            this.router.navigate([ '/' ]);
+            this.router.navigate([ '/user' ]);
           } else {
             this.sessionService.logUser(false);
             this.error = 'Username or password is incorrect';

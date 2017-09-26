@@ -19,8 +19,6 @@ import { LoginComponent } from './pages/form_login/login.component';
 import { LogoutComponent } from './pages/form_logout/logout.component';
 import { PageNotFoundComponent } from './pages/pagenotfount_page/pagenotfound.component';
 
-import { HoverDirective } from './pages/tomorrow_page/hover.directive';
-
 import { BarModule } from './pages/bar/bar.module';
 
 import { AuthenticationService, SessionService, UserService, MenuService, ParseService, MealService } from './services/index';
@@ -38,8 +36,7 @@ import { AuthGuard } from './guards/index';
     RegistrationComponent,
     LoginComponent,
     LogoutComponent,
-    PageNotFoundComponent,
-    HoverDirective
+    PageNotFoundComponent
   ],
   imports:      [
     AppRoutingModule,
